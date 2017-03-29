@@ -3100,18 +3100,38 @@ document.getElementById("gen_btn").onclick = function () {
         var totalCount = (Number(options.introParagraph) * Number(options.introSent)) * Math.round(Number(options.totalParag) / 2);
         var totalCount2 = (Number(options.middleParagraph) * Number(options.middleSent2)) * Math.round(Number(options.totalParag) / 2);
         var totalCount3 = (Number(options.summParagraph) * Number(options.summSent)) * Math.round(Number(options.totalParag) / 2);
+        var num = Number(options.word_1Count) * Math.round(Number(options.totalParag) / 2);
 
         if (Number(localStorage.getItem("newWords")) === 1) {
-            text1_arr = exceptRepeat(text1_arr, options.word_1);
-            text2_arr = exceptRepeat(text2_arr, options.word_1);
-            text3_arr = exceptRepeat(text3_arr, options.word_1);
+            var settingsObject = {
+                intarea: totalCount,
+                midarea: totalCount2,
+                sumarea: totalCount3 
+            };
+            
+            var total = (settingsObject.intarea + settingsObject.midarea + settingsObject.sumarea) * Math.round(Number(options.totalParag) / 2);
+            var result = getEachNUmber(settingsObject, settingsObject.intarea, settingsObject.midarea, settingsObject.sumarea, num, total);
+            
+            if(result) {
+                var numbers = resultProcess(settingsObject, result);
+                
+                text1_arr = exceptRepeat(text1_arr, options.word_1);
+                text2_arr = exceptRepeat(text2_arr, options.word_1);
+                text3_arr = exceptRepeat(text3_arr, options.word_1);
 
-            var arrs1 = segregate(text1_arr, options.word_1),
+                var arrs1 = segregate(text1_arr, options.word_1),
                     arrs2 = segregate(text2_arr, options.word_1),
-                    arrs2 = segregate(text3_arr, options.word_1);
-
-            var intSents = arrs1[0], wordIntSents = arrs1[1];
+                    arrs3 = segregate(text3_arr, options.word_1);
+                
+                console.log(arrs1);
+                console.log(arrs2);
+                console.log(arrs3);
+                console.log(numbers);
+            } else {
+                throw 'You can\'t require' + options.word_1Count + 'max is : ' + total;
+            }                                   
         }
+        throw '';
 
 //        if (Number(localStorage.getItem("newWords")) === 1) {
 //            
@@ -3966,10 +3986,6 @@ var areaObj = {
     sumarea: 1
 };
 
-var total = areaObj.intarea + areaObj.midarea + areaObj.sumarea;
-console.log(total);
-var result = getEachNUmber(areaObj, areaObj.intarea, areaObj.midarea, areaObj.sumarea, num, total);
-console.log(result);
-var numbers = resultProcess(areaObj, result);
-
-console.log(numbers);
+//var total = areaObj.intarea + areaObj.midarea + areaObj.sumarea;
+//var result = getEachNUmber(areaObj, areaObj.intarea, areaObj.midarea, areaObj.sumarea, num, total);
+//var numbers = resultProcess(areaObj, result);
