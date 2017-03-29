@@ -981,48 +981,48 @@ submit.onclick = function() {
 			errors.push(17);
 		}
 
-		if (word_2.value != "") {
+		if (word_2.value !== "") {
 			options.word_2 = word_2.value;
 		} else {
 			errors.push(18);
 		}
 
-		if(word_2Count.value != "" && word_2Count.value >= 0) {
+		if(word_2Count.value !== "" && word_2Count.value >= 0) {
 			options.word_2Count = word_2Count.value;
 		} else {
 			errors.push(19);
 		}
-		if (word_3.value != "") {
+		if (word_3.value !== "") {
 			options.word_3 = word_3.value;
 		} else {
 			errors.push(20);
 		}
 
-		if (word_3Count.value != "" && word_3Count.value >= 0) {
+		if (word_3Count.value !== "" && word_3Count.value >= 0) {
 			options.word_3Count = word_3Count.value;
 		} else {
 			errors.push(21);
 		}
 
-		if (word_4.value != "") {
+		if (word_4.value !== "") {
 			options.word_4 = word_4.value;
 		} else {
 			errors.push(22);
 		}
 
-		if (word_4Count.value != "" && word_4Count.value >= 0) {
+		if (word_4Count.value !== "" && word_4Count.value >= 0) {
 			options.word_4Count = word_4Count.value;
 		} else {
 			errors.push(23);
 		}
 
-		if (word_5.value != "") {
+		if (word_5.value !== "") {
 			options.word_5 = word_5.value;
 		} else {
 			errors.push(24);
 		}
 
-		if (word_5Count.value != "" && word_5Count.value >= 0) {
+		if (word_5Count.value !== "" && word_5Count.value >= 0) {
 			options.word_5Count = word_5Count.value;
 		} else {
 			errors.push(25);
@@ -3252,7 +3252,7 @@ document.getElementById("gen_btn").onclick = function() {
                     var needWord2Sent = word2Sents.length - word2sentsCount;
                     errors.push(2);
                     word_errors.push(2);
-                    document.getElementById("for_word_2").style.display = "block"
+                    document.getElementById("for_word_2").style.display = "block";
                     document.getElementById("for_word_2").innerHTML = "<i class='fa fa-times'></i> Add " + needWord2Sent + " sentences Which will contain <strong><ins>" + 
                                                                         options.word_2 + "</ins></strong>";
                 } else {
