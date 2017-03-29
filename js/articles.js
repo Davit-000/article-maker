@@ -1570,8 +1570,8 @@ submit.onclick = function() {
 				var error15 = " Total article paragraph must be equal all paragraphs section";
 				showError(error15);
 			} else if (errors[i] === 16) {
-				var error16 = " Word filled required"
-				showError(error16)
+				var error16 = " Word filled required";
+				showError(error16);
 			} else if (errors[i] === 17) {
 				var error17 = " Word ammount filled required and must be more then 0Word filled required";
 				showError(error17);
