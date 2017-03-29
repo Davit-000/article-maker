@@ -3109,6 +3109,8 @@ document.getElementById("gen_btn").onclick = function() {
             var arrs1 = segregate(text1_arr, options.word_1),
                 arrs2 = segregate(text2_arr, options.word_1),
                 arrs2 = segregate(text3_arr, options.word_1);
+            
+            var intSents = arrs1[0], wordIntSents = arrs1[1];
         }
         
 //        if (Number(localStorage.getItem("newWords")) === 1) {
