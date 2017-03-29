@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<title>Article Maker</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1>Make Your Article</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-header">
+                            <h1>Project</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="col-lg-3 col-sm-3 col-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control disabled" readonly>
+                                        <label class="input-group-btn">
+                                            <span class="btn btn-default">
+                                                Browse&hellip; <input type="file" id="projectLoader" style="display: none;" multiple>
+                                            </span>
+                                        </label>				
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-3 col-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="articleName">
+                                        <label class="input-group-btn">
+                                            <span class="btn btn-default" onclick="saveArticleSettings();">
+                                                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 col-6">
+                                    <div class="alert alert-success" id="articleSaved" style="display: none;"><i class="fa fa-check" aria-hidden="true"></i> File successfuly uploaded</div>
+                                    <div class="alert alert-danger" id="articleWrong" style="display: none;"><i class="fa fa-times" aria-hidden="true"></i> Ohh! Upload only .txt files.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="col-lg-6 col-sm-6 col-12">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="introduction">Introduction Sentences</label>
+                                            <textarea class="form-control" id="introduction" rows="5"></textarea>
+                                        </div>
+                                        <p class="text-muted pull-right" id="intSentCount"></p>									
+                                        <div class="form-group">
+                                            <label for="middle">Middle Sentences</label>
+                                            <textarea class="form-control" id="middle" rows="10"></textarea>
+                                        </div>
+                                        <p class="text-muted pull-right" id="midSentCount"></p>	
+                                        <div class="form-group">
+                                            <label for="summary">Summary Sentences</label>
+                                            <textarea class="form-control" id="summary" rows="5"></textarea>
+                                        </div>
+                                        <p class="text-muted pull-right" id="sumSentCount"></p>	
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-1 col-sm-10">
+                                                <button id="gen_btn" type="button" class="btn btn-primary btn-lg btn-block disabled">Generate Article</button>
+                                            </div>
+                                        </div>
+                                    </form>	
+                                </div>
+                                <div class="col-lg-6 col-sm-6 col-12">
+                                    <!-- Check Area for Introduction sentences -->
+                                    <div class="alert alert-danger" id="noOptions" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Introduction</ins></small> Set up the settings !
+                                    </div>
+                                    <div class="alert alert-danger" id="wrongIntP" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Introduction</ins></small> Type more sentences !
+                                    </div>
+                                    <div class="alert alert-danger" id="sameSentaces" style="display: none;">
+                                        <i class="fa fa-times"></i> <strong><ins>Introduction</ins></strong> You have same sentance several times !<br>
+                                    </div>
+                                    <div class="alert alert-danger" id="difintsent" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Introduction</ins></small> Type diferent sentences !
+                                    </div>
+                                    <div class="alert alert-danger font" id="moreIntSent" style="display: none;">
+
+                                    </div>
+                                    <div class="alert alert-danger font" id="moreIntSentNonWord" style="display: none;">
+
+                                    </div>
+                                    <div class="alert alert-danger font" id="moreIntSentWord" style="display: none;">
+
+                                    </div>							
+                                    <!-- Check Area for Middle sentences -->
+                                    <div class="alert alert-danger" id="noOptionsM" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Middle</ins></small> Set up the settings !
+                                    </div>
+                                    <div class="alert alert-danger" id="wrongMidP" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Middle</ins></small> Type more sentences !
+                                    </div>
+                                    <div class="alert alert-danger" id="sameSentacesM" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Middle</ins></small> You have same sentance several times !
+                                    </div>
+                                    <div class="alert alert-danger" id="difmidsent" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Middle</ins></small> Type diferent sentences !
+                                    </div>
+                                    <div class="alert alert-danger font" id="moreMiddleSent" style="display: none;">
+
+                                    </div>
+                                    <div class="alert alert-danger font" id="moreMiddleSentNonWord" style="display: none;">
+
+                                    </div>
+                                    <div class="alert alert-danger font" id="moreMiddleSentWord" style="display: none;">
+
+                                    </div>
+                                    <!-- Check Area for summary sentences -->
+                                    <div class="alert alert-danger" id="noOptionsS" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Summary</ins></small> Set up the settings !
+                                    </div>
+                                    <div class="alert alert-danger" id="wrongSumP" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Summary</ins></small> Type more sentences !
+                                    </div>
+                                    <div class="alert alert-danger" id="sameSentacesS" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Summary</ins></small> You have same sentance several times !
+                                    </div>
+                                    <div class="alert alert-danger font" id="difsumsent" style="display: none;">
+                                        <i class="fa fa-times"></i> <small><ins>Summary</ins></small> Type diferent sentences !
+                                    </div>
+                                    <div class="alert alert-danger font" id="moreSummarySent" style="display: none;">
+
+                                    </div>
+                                    <div class="alert alert-danger font" id="moreSummarySentNonWord" style="display: none;">
+
+                                    </div>
+                                    <div class="alert alert-danger font" id="moreSummarySentWord" style="display: none;">
+
+                                    </div>                                                            
+
+                                    <!-- Words checking area -->	
+                                    <div class="alert alert-danger font" id="for_word_1" style="display: none;">
+
+                                    </div>
+                                    <div class="alert alert-danger font" id="for_word_2" style="display: none;">
+
+                                    </div>
+                                    <div class="alert alert-danger font" id="for_word_3" style="display: none;">
+
+                                    </div>    
+                                    <div class="alert alert-danger font" id="for_sents" style="display: none;">
+
+                                    </div>
+                                    <div class="alert alert-danger font" id="cant_req" style="display: none;">
+
+                                    </div>
+
+
+                                    <div class="alert alert-success" id="checkedWord_1" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_1" style="display: none;">chok</div>
+                                    <div class="alert alert-success" id="checkedWord_2" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_2" style="display: none;">chok</div>
+                                    <div class="alert alert-success" id="checkedWord_3" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_3" style="display: none;">chok</div>
+                                    <div class="alert alert-success" id="checkedWord_4" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_4" style="display: none;">chok</div>
+                                    <div class="alert alert-success" id="checkedWord_5" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_5" style="display: none;">chok</div>
+                                    <div class="alert alert-success" id="checkedWord_6" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_6" style="display: none;">chok</div>
+                                    <div class="alert alert-success" id="checkedWord_7" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_7" style="display: none;">chok</div>
+                                    <div class="alert alert-success" id="checkedWord_8" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_8" style="display: none;">chok</div>
+                                    <div class="alert alert-success" id="checkedWord_9" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_9" style="display: none;">chok</div>
+                                    <div class="alert alert-success" id="checkedWord_10" style="display: none;">ok</div>
+                                    <div class="alert alert-danger" id="wrongWord_10" style="display: none;">chok</div>
+                                </div>
+                            </div>						
+                        </div>
+                        <div id="xlam" style="display: none;"></div>
+                        <hr>
+                        <!-- Profile settings -->
+                        <div class="panel-header">
+                            <h1>Profile</h1>						
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="col-lg-3 col-sm-3 col-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" readonly>
+                                        <label class="input-group-btn">
+                                            <span class="btn btn-default">
+                                                Browse&hellip; <input type="file" id="fileLoader" style="display: none;" multiple>
+                                            </span>
+                                        </label>				
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-3 col-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="fileName">
+                                        <label class="input-group-btn">
+                                            <span class="btn btn-default" onclick="saveFile();">
+                                                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 col-6">
+                                <div class="alert alert-danger" id="fileerror"><i class="fa fa-times" aria-hidden="true"></i> Ohh! Upload only .txt files.</div>
+                                <div class="alert alert-success" id="fileOk"><i class="fa fa-check" aria-hidden="true"></i> File successfuly uploaded</div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <!-- Profile Settings -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="col-lg-7 col-sm-7 col-12">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="introSent" class="col-sm-10 control-label">Introduction Senteces <small>Number of sentences per paragraph</small></label>
+                                            <div class="col-sm-2">
+                                                <input type="number" id="introSent" class="form-control">
+                                            </div>
+                                        </div>
+                                        <p class="help-block text-danger hidden" id="forIntroSent"></p>
+                                        <div class="form-group">
+                                            <label for="middleSent1" class="col-sm-7 control-label">Middle Sentences <small>Number of senntences per paragraph</small></label>
+                                            <div class="col-sm-2">
+                                                <input type="number" id="middleSent1" class="form-control">
+                                            </div>
+                                            <label for="middleSent2" class="col-sm-1 control-label">To</label>
+                                            <div class="col-sm-2">
+                                                <input type="number" id="middleSent2" class="form-control">
+                                            </div>
+                                        </div>
+                                        <p class="help-block text-danger hidden" id="forMiddleSent"></p>
+                                        <div class="form-group">
+                                            <label for="summarySent" class="col-sm-10 control-label">Summary Sentences <small>Number of senntences per paragraph</small></label>
+                                            <div class="col-sm-2">
+                                                <input type="number" id="summarySent" class="form-control">
+                                            </div>
+                                        </div>
+                                        <p class="help-block text-danger hidden" id="forSummSent"></p>
+
+                                        <hr>
+
+                                        <div class="form-group">
+                                            <label for="introP" class="col-sm-10 control-label">Introduction Senteces <small>Number of paragraphs per article</small></label>
+                                            <div class="col-sm-2">
+                                                <input type="number" id="introP" class="form-control">
+                                            </div>
+                                        </div>
+                                        <p class="help-block text-danger hidden" id="forIntroP"></p>
+
+                                        <div class="form-group">
+                                            <label for="middleP" class="col-sm-10 control-label">Middle Senteces <small>Number of paragraphs per article</small></label>
+                                            <div class="col-sm-2">
+                                                <input type="number" id="middleP" class="form-control">
+                                            </div>
+                                        </div>
+                                        <p class="help-block text-danger hidden" id="formiddleP"></p>
+
+                                        <div class="form-group">
+                                            <label for="summaryP" class="col-sm-10 control-label">Summary Senteces <small>Number of paragraphs per article</small></label>
+                                            <div class="col-sm-2">
+                                                <input type="number" id="summaryP" class="form-control">
+                                            </div>
+                                        </div>
+                                        <p class="help-block text-danger hidden" id="forsummP"></p>
+
+                                        <hr>
+
+                                        <!-- <div class="form-group">
+                                                <label for="introWord" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                        <input type="text" id="introWord" class="form-control" placeholder="Word...">											
+                                                </div>
+                                                <label for="introWordCount" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                        <input type="number" id="introWordCount" class="form-control">											
+                                                </div>
+                                                <div class="col-12">
+                                                        <div class="col-lg-7 col-sm-7 col-12">
+                                                                <p class="help-block text-danger hidden" id="forintroWord"></p>	
+                                                        </div>
+                                                        <div class="col-lg-5 col-sm-5 col-12">
+                                                                <p class="help-block text-danger hidden" id="forintroWordCount"></p>
+                                                        </div>
+                                                </div>
+                                        </div>									
+                                        
+                                        <div class="form-group">
+                                                <label for="middleWord" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                        <input type="text" id="middleWord" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="middleWordCount" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                        <input type="number" id="middleWordCount" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                        <div class="col-lg-7 col-sm-7 col-12">
+                                                                <p class="help-block text-danger hidden" id="formiddleWord"></p>	
+                                                        </div>
+                                                        <div class="col-lg-5 col-sm-5 col-12">
+                                                                <p class="help-block text-danger hidden" id="formiddleWordCount"></p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="summaryWord" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                        <input type="text" id="summaryWord" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="summaryWordCount" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                        <input type="number" id="summaryWordCount" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                        <div class="col-lg-7 col-sm-7 col-12">
+                                                                <p class="help-block text-danger hidden" id="forsummWord"></p>	
+                                                        </div>
+                                                        <div class="col-lg-5 col-sm-5 col-12">
+                                                                <p class="help-block text-danger hidden" id="forsummWordCount"></p>
+                                                        </div>
+                                                </div>
+                                        </div> -->
+
+                                        <div class="[ form-group ]">
+                                            <!-- <div class="col-sm-offset-9">
+                                                    <input type="checkbox" name="checkbox-primary" id="checkbox-primary" autocomplete="off" />
+                                        <div class="[ btn-group ]">
+                                            <label for="fancy-checkbox-primary" class="[ btn btn-primary ]">
+                                                <span class="[ glyphicon glyphicon-ok ]"></span>
+                                                <span> </span>
+                                            </label>
+                                            <label for="checkbox-primary" class="[ btn btn-default active ]">
+                                                More word's
+                                            </label>
+                                        </div>	
+                                            </div> -->
+                                            <ul class="nav navbar-nav">
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add Words<span class="glyphicon glyphicon-plus pull-right"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a onclick="newWords(this)" id="1">
+                                                                <span class="badge"> 1 </span> <strong> Word</strong>
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a id="2" onclick="newWords(this);">
+                                                                <span class="badge"> 2 </span> <strong> Word's</strong>
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a id="3" onclick="newWords(this);">
+                                                                <span class="badge"> 3 </span> <strong> Word's</strong>
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <!--
+                                                                                                                                    <li>
+                                                                                                                                        <a id="4" onclick="newWords(this);">
+                                                                                                                                                <span class="badge"> 4 </span> <strong> Word's</strong>
+                                                                                                                                        </a>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="divider"></li>
+                                                                                                                                    <li>
+                                                                                                                                        <a id="5" onclick="newWords(this);">
+                                                                                                                                                <span class="badge"> 5 </span> <strong> Word's</strong>
+                                                                                                                                        </a>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="divider"></li>
+                                                                                                                                    <li>
+                                                                                                                                        <a id="6" onclick="newWords(this);">
+                                                                                                                                                <span class="badge"> 6 </span> <strong> Word's</strong>
+                                                                                                                                        </a>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="divider"></li>
+                                                                                                                                    <li>
+                                                                                                                                        <a id="7" onclick="newWords(this);">
+                                                                                                                                                <span class="badge"> 7 </span> <strong> Word's</strong>
+                                                                                                                                        </a>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="divider"></li>
+                                                                                                                                    <li>
+                                                                                                                                        <a id="8" onclick="newWords(this);">
+                                                                                                                                                <span class="badge"> 8 </span> <strong> Word's</strong>
+                                                                                                                                        </a>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="divider"></li>
+                                                                                                                                    <li>
+                                                                                                                                        <a id="9" onclick="newWords(this);">
+                                                                                                                                                <span class="badge"> 9 </span> <strong> Word's</strong>
+                                                                                                                                        </a>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="divider"></li>
+                                                                                                                                    <li>
+                                                                                                                                        <a id="10" onclick="newWords(this);">
+                                                                                                                                                <span class="badge"> 10 </span> <strong> Word's</strong>
+                                                                                                                                        </a>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="divider"></li>
+                                                        -->
+                                                        <li>
+                                                            <a id="11" onclick="newWords(this);">
+                                                                <span class="badge"> <span class="glyphicon glyphicon-remove"> </span> </span> <strong> No Word's</strong>
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+                                        <hr>
+
+                                        <div id="yes">
+                                            <div class="form-group" id="1_st_word" style="display: none;">
+                                                <label for="word_1" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_1" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_1Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_1Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_1"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_1Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="2_nd_word" style="display: none;">
+                                                <label for="word_2" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_2" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_2Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_2Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_2"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_2Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="3_nd_word" style="display: none;">
+                                                <label for="word_3" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_3" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_3Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_3Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_3"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_3Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="4_nd_word" style="display: none;">
+                                                <label for="word_4" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_4" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_4Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_4Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_4"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_4Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="5_nd_word" style="display: none;">
+                                                <label for="word_5" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_5" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_5Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_5Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_5"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_5Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="6_nd_word" style="display: none;">
+                                                <label for="word_6" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_6" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_6Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_6Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_6"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_6Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="7_nd_word" style="display: none;">
+                                                <label for="word_7" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_7" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_7Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_7Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_7"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_7Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="8_nd_word" style="display: none;">
+                                                <label for="word_8" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_8" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_8Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_8Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_8"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_8Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="9_nd_word" style="display: none;">
+                                                <label for="word_9" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_9" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_9Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_9Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_9"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_9Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" id="10_nd_word" style="display: none;">
+                                                <label for="word_9" class="col-sm-5 control-label">Article will contain <small><ins><em>WORD</em></ins></small> -</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" id="word_10" class="form-control" placeholder="Word...">
+                                                </div>
+                                                <label for="word_10Count" class="col-sm-2 control-label">Ammount</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" id="word_10Count" class="form-control">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="col-lg-7 col-sm-7 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_10"></p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-5 col-12">
+                                                        <p class="help-block text-danger hidden" id="forWord_10Count"></p>
+                                                    </div>
+                                                </div>
+                                            </div>				
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="form-group">
+                                            <label for="numberP" class="col-sm-10 control-label">Number of <ins>Articles</ins> that need to be generated</label>
+                                            <div class="col-sm-2">
+                                                <input type="number" id="numberP" class="form-control">
+                                            </div>										
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="help-block text-danger hidden" id="forTotalP"></p>
+                                        </div>
+
+                                        <hr>									
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-5 col-sm-10">
+                                                <button id="submit" type="button" class="btn btn-primary btn-lg btn-block">Submit Settings</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-5 col-sm-5 col-12">
+                                    <div class="alert alert-success" id="successWindow"><i class="fa fa-check" aria-hidden="true"></i> Well done! You successfully set uped profile settings.</div>	
+                                </div>
+                                <div class="col-lg-5 col-sm-5 col-12">
+                                    <div class="alert alert-danger" id="errorWindow"><i class="fa fa-times" aria-hidden="true"></i> Ohh! You have some errors.</div>	
+                                </div>
+                                <div class="col-lg-5 col-sm-5 col-12" id="forError"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>			
+            </div>
+        </div>
+        <button type="button" id="gen_btnn" style="display:none"></button>
+    </section>
+</body>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/file-input.js"></script>
+	<script type="text/javascript" src="js/articles.js"></script>
+</html>
