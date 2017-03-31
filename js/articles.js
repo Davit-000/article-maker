@@ -3083,11 +3083,12 @@ document.getElementById("gen_btn").onclick = function () {
 
         var text1_arr = intArea.split(".");
         text1_arr.pop();
-        var errors = [];
         var text2_arr = middleArea.split(".");
         text2_arr.pop();
         var text3_arr = summaryArea.split(".");
         text3_arr.pop();
+        
+        var errors = [];
 
         easyShuffle(text1_arr);
         easyShuffle(text2_arr);
@@ -3125,7 +3126,7 @@ document.getElementById("gen_btn").onclick = function () {
                     needToAdd3 = numbers.sum * Math.round(Number(options.totalParag) / 2);
                 
                 var word_errors = [];
-                
+
                 // Word_1 checking Inint Area
                 var word_arr1 = arrs1[1];
                 if (word_arr1.length < needToAdd1) {
@@ -3178,6 +3179,7 @@ document.getElementById("gen_btn").onclick = function () {
                 } else {
                     document.getElementById("moreSummarySentNonWord").style.display = "none";
                 }
+                
                 if (word_errors.length === 0) {
                     document.getElementById("moreIntSentNonWord").style.display = "none";
                     document.getElementById("moreMiddleSentNonWord").style.display = "none";
@@ -3279,26 +3281,29 @@ document.getElementById("gen_btn").onclick = function () {
             var result2 = getEachNUmber(settingsObject, settingsObject.intarea, settingsObject.midarea, settingsObject.sumarea, num2, total2);            
             
             if(result1 && result2) {
+                text1_arr = exceptRepeat(text1_arr, options.word_1); text1_arr = exceptRepeat(text1_arr, options.word_2); 
+                text2_arr = exceptRepeat(text2_arr, options.word_1); text2_arr = exceptRepeat(text2_arr, options.word_2);
+                text3_arr = exceptRepeat(text3_arr, options.word_1); text3_arr = exceptRepeat(text3_arr, options.word_2);
+
+                text1_arr = exceptTwoWords(text1_arr, options.word_1, options.word_2);            
+                text2_arr = exceptTwoWords(text2_arr, options.word_1, options.word_2);
+                text3_arr = exceptTwoWords(text3_arr, options.word_1, options.word_2);
+
+                var arrs1 = segregateTwoWords(text1_arr, options.word_1, options.word_2);
+                var arrs2 = segregateTwoWords(text2_arr, options.word_1, options.word_2);
+                var arrs3 = segregateTwoWords(text3_arr, options.word_1, options.word_2);
                 console.log(result1);
                 console.log(result2);
-            }
-            throw '';
-            
-            text1_arr = exceptRepeat(text1_arr, options.word_1); text1_arr = exceptRepeat(text1_arr, options.word_2); 
-            text2_arr = exceptRepeat(text2_arr, options.word_1); text2_arr = exceptRepeat(text2_arr, options.word_2);
-            text3_arr = exceptRepeat(text3_arr, options.word_1); text3_arr = exceptRepeat(text3_arr, options.word_2);
-                        
-            text1_arr = exceptTwoWords(text1_arr, options.word_1, options.word_2);            
-            text2_arr = exceptTwoWords(text2_arr, options.word_1, options.word_2);
-            text3_arr = exceptTwoWords(text3_arr, options.word_1, options.word_2);
+                var numbers1 = resultProcess(settingsObject, result1);
+                var numbers2 = resultProcess(settingsObject, result2);
+                console.log(numbers1);
+                console.log(numbers2);
 
-            var arrs1 = segregateTwoWords(text1_arr, options.word_1, options.word_2);
-            var arrs2 = segregateTwoWords(text2_arr, options.word_1, options.word_2);
-            var arrs3 = segregateTwoWords(text3_arr, options.word_1, options.word_2);
-            
-            console.log(arrs1);
-            console.log(arrs2);
-            console.log(arrs3);
+                console.log(arrs1);
+                console.log(arrs2);
+                console.log(arrs3);
+            }
+            throw '';                        
         }
         
         
@@ -3800,7 +3805,6 @@ function resultProcess(obj, arr) {
     var needObj = {};
     for (var i = 0; i < 3; i++) {
         var min = objMin(obj);
-        console.log(arr);
         if (min === 'intarea') {
             needObj.int = arrayMin(arr);
             delete obj.intarea;
