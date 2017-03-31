@@ -358,8 +358,7 @@ function fireEvent(node, eventName) {
         event.synthetic = true; // allow detection of synthetic events
         node.fireEvent("on" + eventName, event);
     }
-}
-;
+};
 
 function showForArticle(id1, id2, text, num) {
     if (num) {
@@ -3076,9 +3075,9 @@ document.getElementById("summary").onkeyup = function () {
 document.getElementById("gen_btn").onclick = function () {
 
     var intArea = localStorage.getItem("intArea"),
-            middleArea = localStorage.getItem("middleArea"),
-            summaryArea = localStorage.getItem("summaryArea"),
-            options = JSON.parse(localStorage.getItem("options"));
+        middleArea = localStorage.getItem("middleArea"),
+        summaryArea = localStorage.getItem("summaryArea"),
+        options = JSON.parse(localStorage.getItem("options"));
 
     if ((intArea !== "") && (middleArea !== "") && (summaryArea !== "")) {
 
@@ -3179,85 +3178,130 @@ document.getElementById("gen_btn").onclick = function () {
                 } else {
                     document.getElementById("moreSummarySentNonWord").style.display = "none";
                 }
-                
-                if (needToAdd1 > 0) {
-                    var s = 0, l = 0;
-                    for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
-                        for (var j = s; j < s + (word_arr1.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
-                            arrs1[0].splice(l, 0, word_arr1[j]);
+                if (word_errors.length === 0) {
+                    document.getElementById("moreIntSentNonWord").style.display = "none";
+                    document.getElementById("moreMiddleSentNonWord").style.display = "none";
+                    document.getElementById("moreSummarySentNonWord").style.display = "none";
+
+                    if (needToAdd1 > 0) {
+                        var s = 0, l = 0;
+                        for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
+                            for (var j = s; j < s + (word_arr1.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
+                                arrs1[0].splice(l, 0, word_arr1[j]);
+                            }
+                            s += word_arr1.length / Math.ceil(Number(options.totalParag) / 2);
+                            l += Number(options.introParagraph) * Number(options.introSent);
                         }
-                        s += word_arr1.length / Math.ceil(Number(options.totalParag) / 2);
-                        l += Number(options.introParagraph) * Number(options.introSent);
-                    }
 
-                    text1_arr = arrs1[0];
-                    console.log(text1_arr);
-                    console.log(totalCount);
-                    if (text1_arr.length < totalCount) {
-                        errors.push(4);
-                        document.getElementById("moreIntSentWord").style.display = "block";
-                        document.getElementById("moreIntSentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Introduction</ins> : </strong>" +
-                                " Add  " + (totalCount - text1_arr.length) +
-                                " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
-                    } else {
-                        document.getElementById("moreIntSentWord").style.display = "none";
-                    }
-
-                }
-                
-                if (needToAdd2 > 0) {
-                    var q = 0, y = 0;
-                    for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
-                        for (var j = q; j < q + (word_arr2.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
-                            arrs2[0].splice(y, 0, word_arr2[j])
+                        text1_arr = arrs1[0];
+                        if (text1_arr.length < totalCount) {
+                            errors.push(4);
+                            document.getElementById("moreIntSentWord").style.display = "block";
+                            document.getElementById("moreIntSentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Introduction</ins> : </strong>" +
+                                    " Add  " + (totalCount - text1_arr.length) +
+                                    " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
+                        } else {
+                            document.getElementById("moreIntSentWord").style.display = "none";
                         }
-                        q += word_arr2.length / Math.ceil(Number(options.totalParag) / 2);
-                        y += Number(options.middleParagraph) * Number(options.middleSent2);
-                    }
-                    text2_arr = arrs2[0];
 
-                    if (text2_arr.length < totalCount2) {
-                        errors.push(4);
-                        document.getElementById("moreMiddleSentWord").style.display = "block";
-                        document.getElementById("moreMiddleSentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Middle</ins> : </strong>" +
-                                " Add  " + (totalCount2 - text2_arr.length) +
-                                " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
-                    } else {
-                        document.getElementById("moreMiddleSentWord").style.display = "none";
                     }
 
-                }
-                
-                if (needToAdd3 > 0) {
-                    var p = 0, m = 0;
-                    for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
-                        for (var j = p; j < p + (word_arr3.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
-                            arrs3[0].splice(m, 0, word_arr3[j])
+                    if (needToAdd2 > 0) {
+                        var q = 0, y = 0;
+                        for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
+                            for (var j = q; j < q + (word_arr2.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
+                                arrs2[0].splice(y, 0, word_arr2[j]);
+                            }
+                            q += word_arr2.length / Math.ceil(Number(options.totalParag) / 2);
+                            y += Number(options.middleParagraph) * Number(options.middleSent2);
                         }
-                        p += word_arr3.length / Math.ceil(Number(options.totalParag) / 2);
-                        m += Number(options.summParagraph) * Number(options.summSent);
+                        text2_arr = arrs2[0];
+
+                        if (text2_arr.length < totalCount2) {
+                            errors.push(4);
+                            document.getElementById("moreMiddleSentWord").style.display = "block";
+                            document.getElementById("moreMiddleSentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Middle</ins> : </strong>" +
+                                    " Add  " + (totalCount2 - text2_arr.length) +
+                                    " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
+                        } else {
+                            document.getElementById("moreMiddleSentWord").style.display = "none";
+                        }
+
                     }
-                    text3_arr = arrs3[0];
-                    if (text3_arr.length < totalCount3) {
-                        errors.push(4);
-                        document.getElementById("moreSummarySentWord").style.display = "block";
-                        document.getElementById("moreSummarySentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Summary</ins> : </strong>" +
-                                " Add  " + (totalCount3 - text3_arr.length) +
-                                " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
-                    } else {
-                        document.getElementById("moreSummarySentWord").style.display = "none";
+
+                    if (needToAdd3 > 0) {
+                        var p = 0, m = 0;
+                        for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
+                            for (var j = p; j < p + (word_arr3.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
+                                arrs3[0].splice(m, 0, word_arr3[j]);
+                            }
+                            p += word_arr3.length / Math.ceil(Number(options.totalParag) / 2);
+                            m += Number(options.summParagraph) * Number(options.summSent);
+                        }
+                        text3_arr = arrs3[0];
+                        if (text3_arr.length < totalCount3) {
+                            errors.push(4);
+                            document.getElementById("moreSummarySentWord").style.display = "block";
+                            document.getElementById("moreSummarySentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Summary</ins> : </strong>" +
+                                    " Add  " + (totalCount3 - text3_arr.length) +
+                                    " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
+                        } else {
+                            document.getElementById("moreSummarySentWord").style.display = "none";
+                        }
                     }
                 }
-                
                 console.log(numbers);
             } else {
                 throw 'You can\'t require' + options.word_1Count + 'max is : ' + total;
             }                                   
-        }        
+        }
+        
+        if(Number(localStorage.getItem('newWords')) === 2) {
+            /* Parameters */
+            var settingsObject = {
+                intarea: Number(options.introParagraph) * Number(options.introSent),
+                midarea: Number(options.middleParagraph) * Number(options.middleSent2),
+                sumarea: Number(options.summParagraph) * Number(options.summSent) 
+            };
+            
+            var totalCount = (Number(options.introParagraph) * Number(options.introSent)) * Math.round(Number(options.totalParag) / 2);
+            var totalCount2 = (Number(options.middleParagraph) * Number(options.middleSent2)) * Math.round(Number(options.totalParag) / 2);
+            var totalCount3 = (Number(options.summParagraph) * Number(options.summSent)) * Math.round(Number(options.totalParag) / 2);
+            
+            var num1 = Number(options.word_1Count);
+            var num2 = Number(options.word_2Count);
+            
+            var total1 = settingsObject.intarea + settingsObject.midarea + settingsObject.sumarea;
+            var total2 = total1 - Number(options.word_1Count);                        
+            /* Parameters end */
+            
+            var result1 = getEachNUmber(settingsObject, settingsObject.intarea, settingsObject.midarea, settingsObject.sumarea, num1, total1);
+            var result2 = getEachNUmber(settingsObject, settingsObject.intarea, settingsObject.midarea, settingsObject.sumarea, num2, total2);            
+            
+            if(result1 && result2) {
+                console.log(result1);
+                console.log(result2);
+            }
+            throw '';
+            
+            text1_arr = exceptRepeat(text1_arr, options.word_1); text1_arr = exceptRepeat(text1_arr, options.word_2); 
+            text2_arr = exceptRepeat(text2_arr, options.word_1); text2_arr = exceptRepeat(text2_arr, options.word_2);
+            text3_arr = exceptRepeat(text3_arr, options.word_1); text3_arr = exceptRepeat(text3_arr, options.word_2);
+                        
+            text1_arr = exceptTwoWords(text1_arr, options.word_1, options.word_2);            
+            text2_arr = exceptTwoWords(text2_arr, options.word_1, options.word_2);
+            text3_arr = exceptTwoWords(text3_arr, options.word_1, options.word_2);
 
-
-
-
+            var arrs1 = segregateTwoWords(text1_arr, options.word_1, options.word_2);
+            var arrs2 = segregateTwoWords(text2_arr, options.word_1, options.word_2);
+            var arrs3 = segregateTwoWords(text3_arr, options.word_1, options.word_2);
+            
+            console.log(arrs1);
+            console.log(arrs2);
+            console.log(arrs3);
+        }
+        
+        
 
         if (text1_arr.length >= totalCount) {
             document.getElementById("moreIntSent").style.display = "none";
