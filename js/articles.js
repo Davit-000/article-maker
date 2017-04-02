@@ -146,6 +146,7 @@ function newWords(a) {
     }
 
 }
+
 function saveFile() {
     var name = document.getElementById("fileName").value;
     if (name !== "") {
@@ -154,7 +155,9 @@ function saveFile() {
             var a = document.createElement('a');
             a.style = "display: none";
             var saveText = settings;
-            var blob = new Blob([saveText], {type: "text/plain"});
+            var blob = new Blob([saveText], {
+                type: "text/plain"
+            });
             var url = window.URL.createObjectURL(blob);
             a.href = url;
             var fileName = name;
@@ -212,6 +215,7 @@ function saveFile() {
     }
 
 }
+
 function saveArticleSettings() {
     var articleName = document.getElementById("articleName").value;
     if (articleName !== "") {
@@ -225,7 +229,9 @@ function saveArticleSettings() {
         var a = document.createElement('a');
         a.style = "display: none";
         var saveText = settings;
-        var blob = new Blob([saveText], {type: "text/plain"});
+        var blob = new Blob([saveText], {
+            type: "text/plain"
+        });
         var url = window.URL.createObjectURL(blob);
         a.href = url;
         var fileName = articleName;
@@ -279,6 +285,7 @@ function showSubmit() {
     var submitWindow = document.getElementById("successWindow");
     submitWindow.style.display = "block";
 }
+
 function showError(text) {
     var successWindow = document.getElementById("successWindow");
     successWindow.style.display = "none";
@@ -294,6 +301,7 @@ function showError(text) {
     var errorList = document.getElementById("forError");
     errorList.appendChild(errorRow);
 }
+
 function clearErrorList(listId) {
     var errorList = document.getElementById(listId);
     while (errorList.hasChildNodes()) {
@@ -393,6 +401,7 @@ function showForArticle(id1, id2, text, num) {
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
 function myJoin(array) {
     var str = "";
     for (var i = 0; i < array.length; i++) {
@@ -403,8 +412,7 @@ function myJoin(array) {
     return str;
 }
 
-function resetElements()
-{
+function resetElements() {
     var inputs = document.querySelectorAll('input[type=text]');
     //you get the idea.....you can retrieve all inputs by tag name input
     for (var i = 0; i < inputs.length; i++) {
@@ -2271,9 +2279,11 @@ document.getElementById("introduction").onkeyup = function () {
             var sentences = workOnText.split(/[.|?|!]/gi);
             document.getElementById("intSentCount").innerHTML = "<em><ins>Senteces</ins></em> : " + "<strong>" + (sentences.length - 1) + "</strong>";
 
-            var area_sent = sentences, sorted_area_sent = area_sent.slice().sort();
+            var area_sent = sentences,
+                sorted_area_sent = area_sent.slice().sort();
 
-            var area_sent_result = [], notCopied = "";
+            var area_sent_result = [],
+                notCopied = "";
 
             for (var j = 0; j < area_sent.length; j++) {
                 if (sorted_area_sent[j + 1] === sorted_area_sent[j]) {
@@ -2312,7 +2322,9 @@ document.getElementById("introduction").onkeyup = function () {
                 if (results.length === 0) {
                     // 4 WORD'S RULE //
                     var sent = workOnText.split(".");
-                    var new_sent = "", counter = 0, new_str_arr = [];
+                    var new_sent = "",
+                        counter = 0,
+                        new_str_arr = [];
                     for (var i = 0; i < sent.length - 1; i++) {
                         for (var j = counter; j < 2 + counter; j++) {
                             if (sent[j] !== "") {
@@ -2407,7 +2419,9 @@ document.getElementById("introduction").onkeyup = function () {
                     if (notSame_arr.length >= options.introSent * options.introParagraph) {
                         // 4 WORD'S RULE //
                         var sent = notSame.split(".");
-                        var new_sent = "", counter = 0, new_str_arr = [];
+                        var new_sent = "",
+                            counter = 0,
+                            new_str_arr = [];
                         for (var i = 0; i < sent.length - 1; i++) {
                             for (var j = counter; j < 2 + counter; j++) {
                                 if (sent[j] !== "") {
@@ -2487,7 +2501,9 @@ document.getElementById("introduction").onkeyup = function () {
                     }
 
                     var sameSent = document.getElementById("sameSentaces");
-                    var counter = 0, text = "", newLine = document.createElement("br");
+                    var counter = 0,
+                        text = "",
+                        newLine = document.createElement("br");
 
                     for (var i = 0; i < results.length; i++) {
                         if (results[i + 1] !== results[i]) {
@@ -2546,9 +2562,11 @@ document.getElementById("middle").onkeyup = function () {
             var sentences = workOnText.split(/[.|?|!]/gi);
             document.getElementById("midSentCount").innerHTML = "<em><ins>Senteces</ins></em> : " + "<strong>" + (sentences.length - 1) + "</strong>";
 
-            var area_sent = sentences, sorted_area_sent = area_sent.slice().sort();
+            var area_sent = sentences,
+                sorted_area_sent = area_sent.slice().sort();
 
-            var area_sent_result = [], notCopied = "";
+            var area_sent_result = [],
+                notCopied = "";
 
             for (var j = 0; j < area_sent.length; j++) {
                 if (sorted_area_sent[j + 1] === sorted_area_sent[j]) {
@@ -2591,7 +2609,9 @@ document.getElementById("middle").onkeyup = function () {
 
                     // 4 WORD'S RULE //
                     var sent = workOnText.split(".");
-                    var new_sent = "", counter = 0, new_str_arr = [];
+                    var new_sent = "",
+                        counter = 0,
+                        new_str_arr = [];
                     for (var i = 0; i < sent.length - 1; i++) {
                         for (var j = counter; j < 2 + counter; j++) {
                             if (sent[j] !== "") {
@@ -2684,7 +2704,9 @@ document.getElementById("middle").onkeyup = function () {
 
                         // 4 WORD'S RULE //
                         var sent = notSame.split(".");
-                        var new_sent = "", counter = 0, new_str_arr = [];
+                        var new_sent = "",
+                            counter = 0,
+                            new_str_arr = [];
                         for (var i = 0; i < sent.length - 1; i++) {
                             for (var j = counter; j < 2 + counter; j++) {
                                 if (sent[j] !== "") {
@@ -2764,7 +2786,9 @@ document.getElementById("middle").onkeyup = function () {
 
 
                     var sameSent = document.getElementById("sameSentacesM");
-                    var counter = 0, text = "", newLine = document.createElement("br");
+                    var counter = 0,
+                        text = "",
+                        newLine = document.createElement("br");
 
                     for (var i = 0; i < results.length; i++) {
                         if (results[i + 1] !== results[i]) {
@@ -2821,9 +2845,11 @@ document.getElementById("summary").onkeyup = function () {
             document.getElementById("sumSentCount").innerHTML = "<em><ins>Senteces</ins></em> : " + "<strong>" + (sentences.length - 1) + "</strong>";
 
 
-            var area_sent = sentences, sorted_area_sent = area_sent.slice().sort();
+            var area_sent = sentences,
+                sorted_area_sent = area_sent.slice().sort();
 
-            var area_sent_result = [], notCopied = "";
+            var area_sent_result = [],
+                notCopied = "";
 
             for (var j = 0; j < area_sent.length; j++) {
                 if (sorted_area_sent[j + 1] === sorted_area_sent[j]) {
@@ -2864,7 +2890,9 @@ document.getElementById("summary").onkeyup = function () {
 
                     // 4 WORD'S RULE //
                     var sent = workOnText.split(".");
-                    var new_sent = "", counter = 0, new_str_arr = [];
+                    var new_sent = "",
+                        counter = 0,
+                        new_str_arr = [];
                     for (var i = 0; i < sent.length - 1; i++) {
                         for (var j = counter; j < 2 + counter; j++) {
                             if (sent[j] !== "") {
@@ -2874,7 +2902,7 @@ document.getElementById("summary").onkeyup = function () {
                         counter++;
                         new_sent += "-";
                     }
-                    
+
                     var new_sent_arr = new_sent.split("-");
                     var new_sent_str = new_sent_arr.join("");
 
@@ -2958,7 +2986,9 @@ document.getElementById("summary").onkeyup = function () {
 
                         // 4 WORD'S RULE //
                         var sent = notSame.split(".");
-                        var new_sent = "", counter = 0, new_str_arr = [];
+                        var new_sent = "",
+                            counter = 0,
+                            new_str_arr = [];
                         for (var i = 0; i < sent.length - 1; i++) {
                             for (var j = counter; j < 2 + counter; j++) {
                                 if (sent[j] !== "") {
@@ -3039,7 +3069,9 @@ document.getElementById("summary").onkeyup = function () {
 
 
                     var sameSent = document.getElementById("sameSentacesS");
-                    var counter = 0, text = "", newLine = document.createElement("br");
+                    var counter = 0,
+                        text = "",
+                        newLine = document.createElement("br");
 
                     for (var i = 0; i < results.length; i++) {
                         if (results[i + 1] !== results[i]) {
@@ -3087,7 +3119,7 @@ document.getElementById("gen_btn").onclick = function () {
         text2_arr.pop();
         var text3_arr = summaryArea.split(".");
         text3_arr.pop();
-        
+
         var errors = [];
 
         easyShuffle(text1_arr);
@@ -3098,21 +3130,21 @@ document.getElementById("gen_btn").onclick = function () {
             var settingsObject = {
                 intarea: Number(options.introParagraph) * Number(options.introSent),
                 midarea: Number(options.middleParagraph) * Number(options.middleSent2),
-                sumarea: Number(options.summParagraph) * Number(options.summSent) 
+                sumarea: Number(options.summParagraph) * Number(options.summSent)
             };
-            
+
             var totalCount = (Number(options.introParagraph) * Number(options.introSent)) * Math.round(Number(options.totalParag) / 2);
             var totalCount2 = (Number(options.middleParagraph) * Number(options.middleSent2)) * Math.round(Number(options.totalParag) / 2);
             var totalCount3 = (Number(options.summParagraph) * Number(options.summSent)) * Math.round(Number(options.totalParag) / 2);
             var num = Number(options.word_1Count);
-            
+
             var total = settingsObject.intarea + settingsObject.midarea + settingsObject.sumarea;
-            
+
             var result = getEachNUmber(settingsObject, settingsObject.intarea, settingsObject.midarea, settingsObject.sumarea, num, total);
-            
-            if(result) {
+
+            if (result) {
                 var numbers = resultProcess(settingsObject, result);
-                
+
                 text1_arr = exceptRepeat(text1_arr, options.word_1);
                 text2_arr = exceptRepeat(text2_arr, options.word_1);
                 text3_arr = exceptRepeat(text3_arr, options.word_1);
@@ -3120,11 +3152,11 @@ document.getElementById("gen_btn").onclick = function () {
                 var arrs1 = segregate(text1_arr, options.word_1),
                     arrs2 = segregate(text2_arr, options.word_1),
                     arrs3 = segregate(text3_arr, options.word_1);
-            
+
                 var needToAdd1 = numbers.int * Math.round(Number(options.totalParag) / 2),
                     needToAdd2 = numbers.mid * Math.round(Number(options.totalParag) / 2),
                     needToAdd3 = numbers.sum * Math.round(Number(options.totalParag) / 2);
-                
+
                 var word_errors = [];
 
                 // Word_1 checking Inint Area
@@ -3134,8 +3166,8 @@ document.getElementById("gen_btn").onclick = function () {
                     errors.push(4);
                     document.getElementById("moreIntSentNonWord").style.display = "block";
                     document.getElementById("moreIntSentNonWord").innerHTML = "<strong><ins>Introduction</ins> : </strong> " +
-                            "Add " + (needToAdd1 - word_arr1.length) + " sentences " +
-                            "Which will contain <ins>" + options.word_1 + "</ins> word";
+                        "Add " + (needToAdd1 - word_arr1.length) + " sentences " +
+                        "Which will contain <ins>" + options.word_1 + "</ins> word";
                     console.log(needToAdd1 + ' - ' + word_arr1.length);
                 } else if (word_arr1.length > needToAdd1) {
                     for (var k = 0; k < word_arr1.length - needToAdd1; k++) {
@@ -3152,8 +3184,8 @@ document.getElementById("gen_btn").onclick = function () {
                     errors.push(4);
                     document.getElementById("moreMiddleSentNonWord").style.display = "block";
                     document.getElementById("moreMiddleSentNonWord").innerHTML = "<strong><ins>Middle</ins> : </strong> " +
-                            "Add " + (needToAdd2 - word_arr2.length) + " sentences " +
-                            "Which will contain <ins>" + options.word_1 + "</ins> word";
+                        "Add " + (needToAdd2 - word_arr2.length) + " sentences " +
+                        "Which will contain <ins>" + options.word_1 + "</ins> word";
                 } else if (word_arr2.length > needToAdd2) {
                     for (var k = 0; k < word_arr2.length - needToAdd2; k++) {
                         word_arr2.pop();
@@ -3169,8 +3201,8 @@ document.getElementById("gen_btn").onclick = function () {
                     errors.push(4);
                     document.getElementById("moreSummarySentNonWord").style.display = "block";
                     document.getElementById("moreSummarySentNonWord").innerHTML = "<strong><ins>Summary</ins> : </strong> " +
-                            "Add " + (needToAdd3 - word_arr3.length) + " sentences " +
-                            "Which will contain <ins>" + options.word_1 + "</ins> word";
+                        "Add " + (needToAdd3 - word_arr3.length) + " sentences " +
+                        "Which will contain <ins>" + options.word_1 + "</ins> word";
                 } else if (word_arr3.length > needToAdd3) {
                     for (var k = 0; k < word_arr3.length - needToAdd3; k++) {
                         word_arr3.pop();
@@ -3179,14 +3211,15 @@ document.getElementById("gen_btn").onclick = function () {
                 } else {
                     document.getElementById("moreSummarySentNonWord").style.display = "none";
                 }
-                
+
                 if (word_errors.length === 0) {
                     document.getElementById("moreIntSentNonWord").style.display = "none";
                     document.getElementById("moreMiddleSentNonWord").style.display = "none";
                     document.getElementById("moreSummarySentNonWord").style.display = "none";
 
                     if (needToAdd1 > 0) {
-                        var s = 0, l = 0;
+                        var s = 0,
+                            l = 0;
                         for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
                             for (var j = s; j < s + (word_arr1.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
                                 arrs1[0].splice(l, 0, word_arr1[j]);
@@ -3200,8 +3233,8 @@ document.getElementById("gen_btn").onclick = function () {
                             errors.push(4);
                             document.getElementById("moreIntSentWord").style.display = "block";
                             document.getElementById("moreIntSentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Introduction</ins> : </strong>" +
-                                    " Add  " + (totalCount - text1_arr.length) +
-                                    " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
+                                " Add  " + (totalCount - text1_arr.length) +
+                                " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
                         } else {
                             document.getElementById("moreIntSentWord").style.display = "none";
                         }
@@ -3209,7 +3242,8 @@ document.getElementById("gen_btn").onclick = function () {
                     }
 
                     if (needToAdd2 > 0) {
-                        var q = 0, y = 0;
+                        var q = 0,
+                            y = 0;
                         for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
                             for (var j = q; j < q + (word_arr2.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
                                 arrs2[0].splice(y, 0, word_arr2[j]);
@@ -3223,8 +3257,8 @@ document.getElementById("gen_btn").onclick = function () {
                             errors.push(4);
                             document.getElementById("moreMiddleSentWord").style.display = "block";
                             document.getElementById("moreMiddleSentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Middle</ins> : </strong>" +
-                                    " Add  " + (totalCount2 - text2_arr.length) +
-                                    " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
+                                " Add  " + (totalCount2 - text2_arr.length) +
+                                " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
                         } else {
                             document.getElementById("moreMiddleSentWord").style.display = "none";
                         }
@@ -3232,7 +3266,8 @@ document.getElementById("gen_btn").onclick = function () {
                     }
 
                     if (needToAdd3 > 0) {
-                        var p = 0, m = 0;
+                        var p = 0,
+                            m = 0;
                         for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
                             for (var j = p; j < p + (word_arr3.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
                                 arrs3[0].splice(m, 0, word_arr3[j]);
@@ -3245,8 +3280,8 @@ document.getElementById("gen_btn").onclick = function () {
                             errors.push(4);
                             document.getElementById("moreSummarySentWord").style.display = "block";
                             document.getElementById("moreSummarySentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Summary</ins> : </strong>" +
-                                    " Add  " + (totalCount3 - text3_arr.length) +
-                                    " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
+                                " Add  " + (totalCount3 - text3_arr.length) +
+                                " Sentence(s) Which will not contain <ins>" + options.word_1 + "</ins>";
                         } else {
                             document.getElementById("moreSummarySentWord").style.display = "none";
                         }
@@ -3255,64 +3290,268 @@ document.getElementById("gen_btn").onclick = function () {
                 console.log(numbers);
             } else {
                 throw 'You can\'t require' + options.word_1Count + 'max is : ' + total;
-            }                                   
+            }
         }
-        
-        if(Number(localStorage.getItem('newWords')) === 2) {
+
+        if (Number(localStorage.getItem('newWords')) === 2) {
             /* Parameters */
             var settingsObject = {
                 intarea: Number(options.introParagraph) * Number(options.introSent),
                 midarea: Number(options.middleParagraph) * Number(options.middleSent2),
-                sumarea: Number(options.summParagraph) * Number(options.summSent) 
+                sumarea: Number(options.summParagraph) * Number(options.summSent)
             };
-            
+
             var totalCount = (Number(options.introParagraph) * Number(options.introSent)) * Math.round(Number(options.totalParag) / 2);
             var totalCount2 = (Number(options.middleParagraph) * Number(options.middleSent2)) * Math.round(Number(options.totalParag) / 2);
             var totalCount3 = (Number(options.summParagraph) * Number(options.summSent)) * Math.round(Number(options.totalParag) / 2);
-            
+
             var num1 = Number(options.word_1Count);
             var num2 = Number(options.word_2Count);
-            
-            var total1 = settingsObject.intarea + settingsObject.midarea + settingsObject.sumarea;
-            var total2 = total1 - Number(options.word_1Count);                        
-            /* Parameters end */
-            
-            var result1 = getEachNUmber(settingsObject, settingsObject.intarea, settingsObject.midarea, settingsObject.sumarea, num1, total1);
-            var result2 = getEachNUmber(settingsObject, settingsObject.intarea, settingsObject.midarea, settingsObject.sumarea, num2, total2);            
-            
-            if(result1 && result2) {
-                text1_arr = exceptRepeat(text1_arr, options.word_1); text1_arr = exceptRepeat(text1_arr, options.word_2); 
-                text2_arr = exceptRepeat(text2_arr, options.word_1); text2_arr = exceptRepeat(text2_arr, options.word_2);
-                text3_arr = exceptRepeat(text3_arr, options.word_1); text3_arr = exceptRepeat(text3_arr, options.word_2);
 
-                text1_arr = exceptTwoWords(text1_arr, options.word_1, options.word_2);            
+            var total1 = settingsObject.intarea + settingsObject.midarea + settingsObject.sumarea;
+            var total2 = total1 - Number(options.word_1Count);
+            /* Parameters end */
+
+            var result1 = getEachNUmber(settingsObject, settingsObject.intarea, settingsObject.midarea, settingsObject.sumarea, num1, total1);
+            var numbers1 = resultProcess(settingsObject, result1);
+
+            var settingsObject2 = {
+                intarea: Number(options.introParagraph) * Number(options.introSent) - numbers1.int,
+                midarea: Number(options.middleParagraph) * Number(options.middleSent2) - numbers1.mid,
+                sumarea: Number(options.summParagraph) * Number(options.summSent) - numbers1.sum
+            };
+
+            var result2 = getEachNUmber(settingsObject2, settingsObject2.intarea, settingsObject2.midarea, settingsObject2.sumarea, num2, total2);
+            var numbers2 = resultProcess(settingsObject2, result2);
+            
+            var needToAdd1 = numbers1.int * Math.round(Number(options.totalParag) / 2),
+                needToAdd2 = numbers1.mid * Math.round(Number(options.totalParag) / 2),
+                needToAdd3 = numbers1.sum * Math.round(Number(options.totalParag) / 2);
+        
+            var need2ToAdd1 = numbers2.int * Math.round(Number(options.totalParag) / 2),
+                need2ToAdd2 = numbers2.mid * Math.round(Number(options.totalParag) / 2),
+                need2ToAdd3 = numbers2.sum * Math.round(Number(options.totalParag) / 2);
+            
+            if (result1 && result2) {
+                text1_arr = exceptRepeat(text1_arr, options.word_1);
+                text1_arr = exceptRepeat(text1_arr, options.word_2);
+                text2_arr = exceptRepeat(text2_arr, options.word_1);
+                text2_arr = exceptRepeat(text2_arr, options.word_2);
+                text3_arr = exceptRepeat(text3_arr, options.word_1);
+                text3_arr = exceptRepeat(text3_arr, options.word_2);
+
+                text1_arr = exceptTwoWords(text1_arr, options.word_1, options.word_2);
                 text2_arr = exceptTwoWords(text2_arr, options.word_1, options.word_2);
                 text3_arr = exceptTwoWords(text3_arr, options.word_1, options.word_2);
 
                 var arrs1 = segregateTwoWords(text1_arr, options.word_1, options.word_2);
                 var arrs2 = segregateTwoWords(text2_arr, options.word_1, options.word_2);
                 var arrs3 = segregateTwoWords(text3_arr, options.word_1, options.word_2);
-                console.log(result1);
-                console.log(result2);
-                var numbers1 = resultProcess(settingsObject, result1);
-                var numbers2 = resultProcess(settingsObject, result2);
-                console.log(numbers1);
-                console.log(numbers2);
+                
+                var word_errors = [];
+                
+                // Word_1 checking Inint Area
+                var word_arr1 = arrs1[1];
+                if (word_arr1.length < needToAdd1) {
+                    word_errors.push(1);
+                    errors.push(4);
+                    document.getElementById("moreIntSentNonWord").style.display = "block";
+                    document.getElementById("moreIntSentNonWord").innerHTML = "<strong><ins>Introduction</ins> : </strong> " +
+                        "Add " + (needToAdd1 - word_arr1.length) + " sentences " +
+                        "Which will contain <ins>" + options.word_1 + "</ins> word";
+                    console.log(needToAdd1 + ' - ' + word_arr1.length);
+                } else if (word_arr1.length > needToAdd1) {
+                    for (var k = 0; k < word_arr1.length - needToAdd1; k++) {
+                        word_arr1.pop();
+                        k--;
+                    }
+                } else {
+                    document.getElementById("moreIntSentNonWord").style.display = "none";
+                }
+                // Word_1 checking Middle Area
+                var word_arr2 = arrs2[1];
+                if (word_arr2.length < needToAdd2) {
+                    word_errors.push(1);
+                    errors.push(4);
+                    document.getElementById("moreMiddleSentNonWord").style.display = "block";
+                    document.getElementById("moreMiddleSentNonWord").innerHTML = "<strong><ins>Middle</ins> : </strong> " +
+                        "Add " + (needToAdd2 - word_arr2.length) + " sentences " +
+                        "Which will contain <ins>" + options.word_1 + "</ins> word";
+                } else if (word_arr2.length > needToAdd2) {
+                    for (var k = 0; k < word_arr2.length - needToAdd2; k++) {
+                        word_arr2.pop();
+                        k--;
+                    }
+                } else {
+                    document.getElementById("moreMiddleSentNonWord").style.display = "none";
+                }
+                // Word_1 checking Summary Area
+                var word_arr3 = arrs3[1];
+                if (word_arr3.length < needToAdd3) {
+                    word_errors.push(1);
+                    errors.push(4);
+                    document.getElementById("moreSummarySentNonWord").style.display = "block";
+                    document.getElementById("moreSummarySentNonWord").innerHTML = "<strong><ins>Summary</ins> : </strong> " +
+                        "Add " + (needToAdd3 - word_arr3.length) + " sentences " +
+                        "Which will contain <ins>" + options.word_1 + "</ins> word";
+                } else if (word_arr3.length > needToAdd3) {
+                    for (var k = 0; k < word_arr3.length - needToAdd3; k++) {
+                        word_arr3.pop();
+                        k--;
+                    }
+                } else {
+                    document.getElementById("moreSummarySentNonWord").style.display = "none";
+                }
+                
+                // Word 2 checking Int area
+                var word2_arr1 = arrs1[2];
+                if(word2_arr1.length < need2ToAdd1) {
+                    word_errors.push(1);
+                    errors.push(4);
+                    document.getElementById("moreSummarySentNonWord").style.display = "block";
+                    document.getElementById("moreSummarySentNonWord").innerHTML = "<strong><ins>Summary</ins> : </strong> " +
+                        "Add " + (need2ToAdd1 - word2_arr1.length) + " sentences " +
+                        "Which will contain <ins>" + options.word_2 + "</ins> word";
+                } else if(word2_arr1.length > need2ToAdd1) {
+                    for (var k = 0; k < word2_arr1.length - need2ToAdd1; k++) {
+                        word2_arr1.pop();
+                        k--;
+                    }
+                } else {
+                    document.getElementById("moreSummarySentNonWord").style.display = "none";
+                }
+                // Word 2 checking Mid area
+                var word2_arr2 = arrs2[2];
+                if(word2_arr2.length < need2ToAdd2) {
+                    word_errors.push(1);
+                    errors.push(4);
+                    document.getElementById("moreSummarySentNonWord").style.display = "block";
+                    document.getElementById("moreSummarySentNonWord").innerHTML = "<strong><ins>Summary</ins> : </strong> " +
+                        "Add " + (need2ToAdd2 - word2_arr2.length) + " sentences " +
+                        "Which will contain <ins>" + options.word_2 + "</ins> word";
+                } else if(word2_arr2.length > need2ToAdd2) {
+                    for (var k = 0; k < word2_arr2.length - need2ToAdd2; k++) {
+                        word2_arr2.pop();
+                        k--;
+                    }
+                } else {
+                    document.getElementById("moreSummarySentNonWord").style.display = "none";
+                }
+                // Word 2 checking Sum area
+                var word2_arr3 = arrs3[2];
+                if(word2_arr3.length < need2ToAdd3) {
+                    word_errors.push(1);
+                    errors.push(4);
+                    document.getElementById("moreSummarySentNonWord").style.display = "block";
+                    document.getElementById("moreSummarySentNonWord").innerHTML = "<strong><ins>Summary</ins> : </strong> " +
+                        "Add " + (need2ToAdd3 - word2_arr3.length) + " sentences " +
+                        "Which will contain <ins>" + options.word_2 + "</ins> word";
+                } else if(word2_arr3.length > need2ToAdd3) {
+                    for (var k = 0; k < word2_arr3.length - need2ToAdd3; k++) {
+                        word2_arr3.pop();
+                        k--;
+                    }
+                } else {
+                    document.getElementById("moreSummarySentNonWord").style.display = "none";
+                }
 
-                console.log(arrs1);
-                console.log(arrs2);
-                console.log(arrs3);
+                if (word_errors.length === 0) {
+                    if (needToAdd1 > 0 && need2ToAdd1 > 0) {
+                        var s = 0, l = 0, c = 0;
+                        for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
+                            for (var j = s; j < s + (word_arr1.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
+                                arrs1[0].splice(l, 0, word_arr1[j]);
+                                l++;
+                            }
+                            s += word_arr1.length / Math.ceil(Number(options.totalParag) / 2);
+                            for (var y = c; y < c + (word2_arr1.length / Math.ceil(Number(options.totalParag) / 2)); y++) {
+                                arrs1[0].splice(l, 0, word2_arr1[y]);
+                            }
+                            c += word2_arr1.length / Math.ceil(Number(options.totalParag) / 2);
+
+                            l += Number(options.introParagraph) * Number(options.introSent);
+                        }
+
+                        text1_arr = arrs1[0];
+                        if (text1_arr.length < totalCount) {
+                            errors.push(4);
+                            document.getElementById("moreIntSentWord").style.display = "block";
+                            document.getElementById("moreIntSentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Introduction</ins> : </strong>" +
+                                " Add  " + (totalCount - text1_arr.length) +
+                                " Sentence(s) Which will not contain <ins>" + options.word_1 + "and" + options.word_2 + "</ins>";
+                        } else {
+                            document.getElementById("moreIntSentWord").style.display = "none";
+                        }
+                    }
+                
+                    if (needToAdd2 > 0 && need2ToAdd2 > 0) {
+                        var s = 0, l = 0, c = 0;
+                        for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
+                            for (var j = s; j < s + (word_arr2.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
+                                arrs2[0].splice(l, 0, word_arr2[j]);
+                                l++;
+                            }
+                            s += word_arr2.length / Math.ceil(Number(options.totalParag) / 2);
+                            for (var y = c; y < c + (word2_arr2.length / Math.ceil(Number(options.totalParag) / 2)); y++) {
+                                arrs2[0].splice(l, 0, word2_arr2[y]);
+                            }
+                            c += word2_arr2.length / Math.ceil(Number(options.totalParag) / 2);
+
+                            l += Number(options.introParagraph) * Number(options.introSent);
+                        }
+
+                        text2_arr = arrs2[0];
+                        if (text2_arr.length < totalCount2) {
+                            errors.push(4);
+                            document.getElementById("moreIntSentWord").style.display = "block";
+                            document.getElementById("moreIntSentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Introduction</ins> : </strong>" +
+                                " Add  " + (totalCount2 - text2_arr.length) +
+                                " Sentence(s) Which will not contain <ins>" + options.word_1 + "and" + options.word_2 + "</ins>";
+                        } else {
+                            document.getElementById("moreIntSentWord").style.display = "none";
+                        }
+                    }
+                    
+                    if (needToAdd3 > 0 && need2ToAdd3 > 0) {
+                        var s = 0, l = 0, c = 0;
+                        for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
+                            for (var j = s; j < s + (word_arr3.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
+                                arrs3[0].splice(l, 0, word_arr3[j]);
+                                l++;
+                            }
+                            s += word_arr3.length / Math.ceil(Number(options.totalParag) / 2);
+                            for (var y = c; y < c + (word2_arr3.length / Math.ceil(Number(options.totalParag) / 2)); y++) {
+                                arrs3[0].splice(l, 0, word2_arr3[y]);
+                            }
+                            c += word2_arr3.length / Math.ceil(Number(options.totalParag) / 2);
+
+                            l += Number(options.introParagraph) * Number(options.introSent);
+                        }
+
+                        text3_arr = arrs3[0];
+                        if (text3_arr.length < totalCount3) {
+                            errors.push(4);
+                            document.getElementById("moreIntSentWord").style.display = "block";
+                            document.getElementById("moreIntSentWord").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Introduction</ins> : </strong>" +
+                                " Add  " + (totalCount3 - text3_arr.length) +
+                                " Sentence(s) Which will not contain <ins>" + options.word_1 + "and" + options.word_2 + "</ins>";
+                        } else {
+                            document.getElementById("moreIntSentWord").style.display = "none";
+                        }
+                    }
+                }
+                
             }
-            throw '';                        
+
         }
-        
-        
 
         if (text1_arr.length >= totalCount) {
             document.getElementById("moreIntSent").style.display = "none";
             var needCount = Number(options.introSent) * Number(options.introParagraph);
 
-            var my_arr = [], total_arr = [], k = 0;
+            var my_arr = [],
+                total_arr = [],
+                k = 0;
             for (var i = 0; i < totalCount / needCount; i++) {
                 for (var j = k; j < needCount + k; j++) {
                     my_arr.push(text1_arr[j]);
@@ -3326,8 +3565,8 @@ document.getElementById("gen_btn").onclick = function () {
             var needCount = Number(options.introSent) * Number(options.introParagraph);
             document.getElementById("moreIntSent").style.display = "block";
             document.getElementById("moreIntSent").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Introduction</ins> : </strong>" +
-                    " System can generate " + (Math.floor((text1_arr.length / needCount) * 2)) +
-                    " Articles";
+                " System can generate " + (Math.floor((text1_arr.length / needCount) * 2)) +
+                " Articles";
             errors.push(1);
         }
 
@@ -3335,7 +3574,9 @@ document.getElementById("gen_btn").onclick = function () {
             document.getElementById("moreMiddleSent").style.display = "none";
             var needCount2 = Number(options.middleSent2) * Number(options.middleParagraph);
 
-            var my_arr2 = [], total_arr2 = [], z = 0;
+            var my_arr2 = [],
+                total_arr2 = [],
+                z = 0;
             for (var i = 0; i < totalCount2 / needCount2; i++) {
                 for (var j = z; j < needCount2 + z; j++) {
                     my_arr2.push(text2_arr[j]);
@@ -3349,8 +3590,8 @@ document.getElementById("gen_btn").onclick = function () {
             var needCount2 = Number(options.middleSent2) * Number(options.middleParagraph);
             document.getElementById("moreMiddleSent").style.display = "block";
             document.getElementById("moreMiddleSent").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Middle</ins> : </strong>" +
-                    " System can generate " + (Math.floor((text2_arr.length / needCount2) * 2)) +
-                    " Articles";
+                " System can generate " + (Math.floor((text2_arr.length / needCount2) * 2)) +
+                " Articles";
             errors.push(2);
         }
 
@@ -3358,7 +3599,9 @@ document.getElementById("gen_btn").onclick = function () {
             document.getElementById("moreSummarySent").style.display = "none";
             var needCount3 = Number(options.summSent) * Number(options.summParagraph);
 
-            var my_arr3 = [], total_arr3 = [], x = 0;
+            var my_arr3 = [],
+                total_arr3 = [],
+                x = 0;
             for (var i = 0; i < totalCount3 / needCount3; i++) {
                 for (var j = x; j < needCount3 + x; j++) {
                     my_arr3.push(text3_arr[j]);
@@ -3372,8 +3615,8 @@ document.getElementById("gen_btn").onclick = function () {
             var needCount3 = Number(options.summSent) * Number(options.summParagraph);
             document.getElementById("moreSummarySent").style.display = "block";
             document.getElementById("moreSummarySent").innerHTML = "<i class='fa fa-times'></i> <strong><ins>Summary</ins> : </strong>" +
-                    " System can generate " + (Math.floor((text3_arr.length / needCount3) * 2)) +
-                    " Articles";
+                " System can generate " + (Math.floor((text3_arr.length / needCount3) * 2)) +
+                " Articles";
             errors.push(3);
         }
 
@@ -3391,7 +3634,8 @@ document.getElementById("gen_btn").onclick = function () {
             total_arr2 = concatParagraph(total_arr2, Number(options.totalParag));
             total_arr3 = concatParagraph(total_arr3, Number(options.totalParag));
 
-            var article = "", final_article = "";
+            var article = "",
+                final_article = "";
             for (var i = 0; i < Number(options.totalParag); i++) {
                 article = total_arr[i] + total_arr2[i] + total_arr3[i] + "-----\n\n";
                 final_article += article;
@@ -3403,7 +3647,9 @@ document.getElementById("gen_btn").onclick = function () {
             var a = document.createElement('a');
             a.style = "display: none";
             name = "gen-file";
-            var blob = new Blob([final_article], {type: "text/plain"});
+            var blob = new Blob([final_article], {
+                type: "text/plain"
+            });
             var url = window.URL.createObjectURL(blob);
             a.href = url;
             var fileName = name;
@@ -3418,12 +3664,30 @@ document.getElementById("gen_btn").onclick = function () {
     }
 };
 
+var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+var arr1 = ['s','s','s','s','s','s','s','s'];
+var arr2 = ['c','c','c','c','c','c'];
+
+var l = 0, s = 0, c = 0, z = 0;
+for(var i = 0; i < 2; i++) {
+    for(var j = s; j < arr1.length / 2 + s; j++) {
+        arr.splice(l, 0, arr1[j]);
+        l++;
+    }
+    s += arr1.length / 2;
+    for(var k = c; k < arr2.length / 2 + c; k++) {
+        arr.splice(l, 0, arr2[k]);
+    }
+    c += arr2.length / 2;
+    l += arr.length / 2 ;
+}
+
+console.log(arr);
+
 function factorial(num) {
-    if (num === 0 || num === 1)
-    {
+    if (num === 0 || num === 1) {
         return 1;
-    } else
-    {
+    } else {
         return num * factorial(num - 1);
     }
 }
@@ -3437,7 +3701,7 @@ function shuffle(arr) {
     var n = arr.length;
     var ways = [];
     for (var i = 0, j = 1; i < n; ways.push(j *= ++i))
-        ;
+    ;
 
     var totalWays = ways.pop();
 
@@ -3464,7 +3728,8 @@ function easyShuffle(a) {
 }
 
 function compare(array) {
-    var i = 0, j, k, l;
+    var i = 0,
+        j, k, l;
     while (i < array.length) {
         j = 0;
         while (j + 1 < array[i].length) {
@@ -3488,7 +3753,9 @@ function compare(array) {
 }
 
 function totalResult(array, p, s) {
-    var arr = [], total_arr = [], k = 0;
+    var arr = [],
+        total_arr = [],
+        k = 0;
 
     for (var i = 0; i < p; i++) {
         for (var j = k; j < s + k; j++) {
@@ -3527,8 +3794,11 @@ function cross(array) {
 }
 
 function divide(array, a, p) {
-    var div_arr = [], total_div = [], c = 0, parag = "",
-            int_arr = [];
+    var div_arr = [],
+        total_div = [],
+        c = 0,
+        parag = "",
+        int_arr = [];
     for (var i = 0; i < array.length; i++) {
         for (var j = 0; j < array[i].length; j++) {
             parag += array[i][j] + ". ";
@@ -3549,7 +3819,8 @@ function divide(array, a, p) {
 }
 
 function concatParagraph(array, a) {
-    var article = "", art_arr = [];
+    var article = "",
+        art_arr = [];
     for (var i = 0; i < a; i++) {
         for (var j = 0; j < array[i].length; j++) {
             article += array[i][j] + "\n\n";
@@ -3561,7 +3832,8 @@ function concatParagraph(array, a) {
 }
 
 function countWords(array, word) {
-    var word_reg = new RegExp(word, "i"), count = 0;
+    var word_reg = new RegExp(word, "i"),
+        count = 0;
     for (var i = 0; i < array.length; i++) {
         var patt = word_reg.test(array[i]);
         if (patt) {
@@ -3574,7 +3846,9 @@ function countWords(array, word) {
 }
 
 function segregate(array, word) {
-    var wordExp = new RegExp(word, "i"), new_array = [], totalArr = [];
+    var wordExp = new RegExp(word, "i"),
+        new_array = [],
+        totalArr = [];
     for (var i = 0; i < array.length; i++) {
         if (wordExp.test(array[i])) {
             new_array.push(array[i]);
@@ -3588,8 +3862,11 @@ function segregate(array, word) {
 }
 
 function segregateTwoWords(array, word1, word2) {
-    var word1Exp = new RegExp(word1, "i"), word2Exp = new RegExp(word2, "i"),
-            new_arr1 = [], new_arr2 = [], result = [];
+    var word1Exp = new RegExp(word1, "i"),
+        word2Exp = new RegExp(word2, "i"),
+        new_arr1 = [],
+        new_arr2 = [],
+        result = [];
     for (var i = 0; i < array.length; i++) {
         if (word1Exp.test(array[i])) {
             new_arr1.push(array[i]);
@@ -3607,8 +3884,13 @@ function segregateTwoWords(array, word1, word2) {
 }
 
 function segregateThreeWords(array, word1, word2, word3) {
-    var word1Exp = new RegExp(word1, "i"), word2Exp = new RegExp(word2, "i"),
-            word3Exp = new RegExp(word3, "i"), new_arr1 = [], new_arr2 = [], new_arr3 = [], result = [];
+    var word1Exp = new RegExp(word1, "i"),
+        word2Exp = new RegExp(word2, "i"),
+        word3Exp = new RegExp(word3, "i"),
+        new_arr1 = [],
+        new_arr2 = [],
+        new_arr3 = [],
+        result = [];
     for (var i = 0; i < array.length; i++) {
         if (word1Exp.test(array[i])) {
             new_arr1.push(array[i]);
@@ -3629,7 +3911,8 @@ function segregateThreeWords(array, word1, word2, word3) {
 }
 
 function exceptRepeat(array, word) {
-    var reg = new RegExp(word, "gi"), match;
+    var reg = new RegExp(word, "gi"),
+        match;
     for (var i = 0; i < array.length; i++) {
         match = array[i].match(reg);
         if (match !== null && match.length > 1) {
@@ -3666,7 +3949,7 @@ function exceptThreeWords(array, word1, word2, word3) {
             i--;
         }
     }
-    return  array;
+    return array;
 }
 
 function marge(array) {
@@ -3678,22 +3961,12 @@ Object.defineProperty(Array.prototype, 'chunk_inefficient', {
     value: function (chunkSize) {
         var array = this;
         return [].concat.apply([],
-        array.map(function (elem, i) {
-            return i % chunkSize ? [] : [array.slice(i, i + chunkSize)];
-        })
+            array.map(function (elem, i) {
+                return i % chunkSize ? [] : [array.slice(i, i + chunkSize)];
+            })
         );
     }
 });
-
-//var my_obj = {
-//    int : "Whether there will have been a “biotech Chernobyl” is an open question,answerable only in the speculative tense of the future anterior.",
-//    mid : "This technology, which was considered but never implemented byMonsanto, would make it impossible for genetically modified plants toproduce viable seed, an innovation intended to guard surrounding plantsfrom crossbreeding and to provide a kind of biological patent protection, as 104 Risk CRitiCismRevised Pagesfarmers would not be able to save or share seed from the crop.",
-//    sum : "Monsanto’s attempts to insure against the weather, its seeming confidencein its ability to predict and engineer for the future, offer a tellingcontrast to the more precautionary spirit of Ruth Ozeki’s novel.In the service of such peeling, one might juxtapose DeLillo’s novel toHelena María Viramontes’s Under the Feet of Jesus, a novel explicitly dedicatedto César Chávez that highlights the experiences of farmworkers andtheir families.This technology, which was considered but never implemented byMonsanto, would make it impossible for genetically modified plants toproduce viable seed, an innovation intended to guard surrounding plantsfrom crossbreeding and to provide a kind of biological patent protection, as 104 Risk CRitiCismRevised Pagesfarmers would not be able to save or share seed from the crop.Whether there will have been a “biotech Chernobyl” is an open question,answerable only in the speculative tense of the future anterior."
-//}
-//var max = 5 * 1024, count = 4;
-//var amount = (my_obj.sum.length * 2) / 1024 ;
-//if
-//console.log("Size :" + amount.toFixed(2) + " KB");
 
 function mergeSort(arr) {
     if (arr.length < 2)
@@ -3736,10 +4009,10 @@ function deleteElement(array, value) {
 
 function objMin(obj) {
     var min = Infinity,
-            minKey = '';
+        minKey = '';
     if (Object.keys(obj).length > 1) {
         Object.keys(obj).map(function (key, value) {
-            var value = areaObj[key];
+            var value = obj[key];
             if (value < min) {
                 min = value;
                 minKey = key;
@@ -3754,7 +4027,7 @@ function objMin(obj) {
 
 function arrayMin(arr) {
     var len = arr.length,
-            min = Infinity;
+        min = Infinity;
     while (len--) {
         if (arr[len] < min) {
             min = arr[len];
@@ -3767,16 +4040,16 @@ function getEachNUmber(obj, num1, num2, num3, num, total) {
     if (num <= total) {
         if (num % 3 === 0) {
             var num1 = num / 3,
-                    num2 = num1,
-                    num3 = num1;
+                num2 = num1,
+                num3 = num1;
         } else {
             var num1 = Math.floor(num / 3),
-                    num2 = num1,
-                    num3 = num1 + (num % 3);
+                num2 = num1,
+                num3 = num1 + (num % 3);
         }
 
         var min = Math.min(num1, num2, num3),
-                areaMin = Math.min(obj.intarea, obj.midarea, obj.sumarea);
+            areaMin = Math.min(obj.intarea, obj.midarea, obj.sumarea);
         if (min > areaMin) {
             num1 = areaMin;
 
@@ -3821,15 +4094,3 @@ function resultProcess(obj, arr) {
     }
     return needObj;
 }
-
-var num = 7;
-
-var areaObj = {
-    intarea: 2,
-    midarea: 3,
-    sumarea: 1
-};
-
-//var total = areaObj.intarea + areaObj.midarea + areaObj.sumarea;
-//var result = getEachNUmber(areaObj, areaObj.intarea, areaObj.midarea, areaObj.sumarea, num, total);
-//var numbers = resultProcess(areaObj, result);
