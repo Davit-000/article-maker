@@ -3229,6 +3229,8 @@ document.getElementById("gen_btn").onclick = function () {
                         }
 
                         text1_arr = arrs1[0];
+                        console.log(text1_arr);
+                        throw '';
                         if (text1_arr.length < totalCount) {
                             errors.push(4);
                             document.getElementById("moreIntSentWord").style.display = "block";
@@ -3455,24 +3457,22 @@ document.getElementById("gen_btn").onclick = function () {
                     document.getElementById("moreSummarySentNonWord").style.display = "none";
                 }
 
-                if (word_errors.length === 0) {
+                if (word_errors.length === 0) {                    
                     if (needToAdd1 > 0 && need2ToAdd1 > 0) {
-                        var s = 0, l = 0, c = 0;
+                        var array = plusArrs(arrs1[1], arrs1[2], Math.ceil(Number(options.totalParag) / 2));
+                        var s = 0,
+                            l = 0;
                         for (var i = 0; i < Math.ceil(Number(options.totalParag) / 2); i++) {
-                            for (var j = s; j < s + (word_arr1.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
-                                arrs1[0].splice(l, 0, word_arr1[j]);
-                                l++;
+                            for (var j = s; j < s + (array.length / Math.ceil(Number(options.totalParag) / 2)); j++) {
+                                arrs1[0].splice(l, 0, array[j]);
                             }
-                            s += word_arr1.length / Math.ceil(Number(options.totalParag) / 2);
-                            for (var y = c; y < c + (word2_arr1.length / Math.ceil(Number(options.totalParag) / 2)); y++) {
-                                arrs1[0].splice(l, 0, word2_arr1[y]);
-                            }
-                            c += word2_arr1.length / Math.ceil(Number(options.totalParag) / 2);
-
+                            s += array.length / Math.ceil(Number(options.totalParag) / 2);
                             l += Number(options.introParagraph) * Number(options.introSent);
                         }
 
                         text1_arr = arrs1[0];
+                        console.log(text1_arr);
+                        throw '';
                         if (text1_arr.length < totalCount) {
                             errors.push(4);
                             document.getElementById("moreIntSentWord").style.display = "block";
@@ -3664,25 +3664,19 @@ document.getElementById("gen_btn").onclick = function () {
     }
 };
 
-var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
-var arr1 = ['s','s','s','s','s','s','s','s'];
-var arr2 = ['c','c','c','c','c','c'];
-
-var l = 0, s = 0, c = 0, z = 0;
-for(var i = 0; i < 2; i++) {
-    for(var j = s; j < arr1.length / 2 + s; j++) {
-        arr.splice(l, 0, arr1[j]);
-        l++;
+function plusArrs(array1, array2, d) {
+    var l = 0, ll = array1.length / d, s = 0;
+    for(var i = 0; i < d; i++) {
+        for(var j = s; j < (array2.length / d) + s; j++) {
+            array1.splice(l, 0, array2[j]);
+            l++;
+        }
+        console.log(l);
+        s += array2.length / d;
+        l += ll;
     }
-    s += arr1.length / 2;
-    for(var k = c; k < arr2.length / 2 + c; k++) {
-        arr.splice(l, 0, arr2[k]);
-    }
-    c += arr2.length / 2;
-    l += arr.length / 2 ;
+    return array1;
 }
-
-console.log(arr);
 
 function factorial(num) {
     if (num === 0 || num === 1) {
