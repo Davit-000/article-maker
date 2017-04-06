@@ -3102,12 +3102,13 @@ document.getElementById("gen_btn").onclick = function () {
 
     if ((intArea !== "") && (middleArea !== "") && (summaryArea !== "")) {
 
-        var text1_arr = intArea.split(".");
-        text1_arr.pop();
-        var text2_arr = middleArea.split(".");
-        text2_arr.pop();
-        var text3_arr = summaryArea.split(".");
-        text3_arr.pop();
+        var text1_arr = intArea.split("."); text1_arr.pop();
+        var text2_arr = middleArea.split("."); text2_arr.pop();
+        var text3_arr = summaryArea.split("."); text3_arr.pop();
+        
+        var totalCount = (Number(options.introParagraph) * Number(options.introSent)) * Math.round(Number(options.totalParag) / 2);
+        var totalCount2 = (Number(options.middleParagraph) * Number(options.middleSent2)) * Math.round(Number(options.totalParag) / 2);
+        var totalCount3 = (Number(options.summParagraph) * Number(options.summSent)) * Math.round(Number(options.totalParag) / 2);
 
         var errors = [];
 
@@ -3121,10 +3122,7 @@ document.getElementById("gen_btn").onclick = function () {
                 midarea: Number(options.middleParagraph) * Number(options.middleSent2),
                 sumarea: Number(options.summParagraph) * Number(options.summSent)
             };
-
-            var totalCount = (Number(options.introParagraph) * Number(options.introSent)) * Math.round(Number(options.totalParag) / 2);
-            var totalCount2 = (Number(options.middleParagraph) * Number(options.middleSent2)) * Math.round(Number(options.totalParag) / 2);
-            var totalCount3 = (Number(options.summParagraph) * Number(options.summSent)) * Math.round(Number(options.totalParag) / 2);
+            
             var num = Number(options.word_1Count);
 
             var total = settingsObject.intarea + settingsObject.midarea + settingsObject.sumarea;
@@ -3287,10 +3285,6 @@ document.getElementById("gen_btn").onclick = function () {
                 midarea: Number(options.middleParagraph) * Number(options.middleSent2),
                 sumarea: Number(options.summParagraph) * Number(options.summSent)
             };
-
-            var totalCount = (Number(options.introParagraph) * Number(options.introSent)) * Math.round(Number(options.totalParag) / 2);
-            var totalCount2 = (Number(options.middleParagraph) * Number(options.middleSent2)) * Math.round(Number(options.totalParag) / 2);
-            var totalCount3 = (Number(options.summParagraph) * Number(options.summSent)) * Math.round(Number(options.totalParag) / 2);
 
             var num1 = Number(options.word_1Count);
             var num2 = Number(options.word_2Count);
@@ -3523,9 +3517,6 @@ document.getElementById("gen_btn").onclick = function () {
                 midarea: Number(options.middleParagraph) * Number(options.middleSent2),
                 sumarea: Number(options.summParagraph) * Number(options.summSent)
             };
-            var totalCount = (Number(options.introParagraph) * Number(options.introSent)) * Math.round(Number(options.totalParag) / 2);
-            var totalCount2 = (Number(options.middleParagraph) * Number(options.middleSent2)) * Math.round(Number(options.totalParag) / 2);
-            var totalCount3 = (Number(options.summParagraph) * Number(options.summSent)) * Math.round(Number(options.totalParag) / 2);
             
             var num1 = Number(options.word_1Count);
             var num2 = Number(options.word_2Count);
@@ -3818,6 +3809,7 @@ document.getElementById("gen_btn").onclick = function () {
                 }
             }              
         }
+        
         if (text1_arr.length >= totalCount) {
             document.getElementById("moreIntSent").style.display = "none";
             var needCount = Number(options.introSent) * Number(options.introParagraph);
