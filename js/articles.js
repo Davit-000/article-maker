@@ -527,7 +527,7 @@ document.getElementById("word_1").onkeyup = function () {
     var help = document.getElementById("forWord_1");
     clearHelper(help);
 
-    if (word_1 === "") {
+    if (word_1 == "") {
         showHelper(help, "Word filled required");
     }
 };
@@ -537,7 +537,7 @@ document.getElementById("word_1Count").onchange = function () {
     var help = document.getElementById("forWord_1Count");
     clearHelper(help);
 
-    if ((word_1Count === "") || (word_1Count < 0)) {
+    if ((word_1Count == "") || (word_1Count < 0)) {
         showHelper(help, " Word ammount filled required and can be 0 or more");
     }
 };
@@ -547,7 +547,7 @@ document.getElementById("word_2").onkeyup = function () {
     var help = document.getElementById("forWord_2");
     clearHelper(help);
 
-    if (word_2 === "") {
+    if (word_2 == "") {
         showHelper(help, " Word filled required");
     }
 };
@@ -557,7 +557,7 @@ document.getElementById("word_2Count").onchange = function () {
     var help = document.getElementById("forWord_2Count");
     clearHelper(help);
 
-    if ((word_2Count === "") || (word_2Count < 0)) {
+    if ((word_2Count == "") || (word_2Count < 0)) {
         showHelper(help, " Word filled ammount required and can be 0 or more");
     }
 };
@@ -567,7 +567,7 @@ document.getElementById("word_3").onkeyup = function () {
     var help = document.getElementById("forWord_3");
     clearHelper(help);
 
-    if (word_3 === "") {
+    if (word_3 == "") {
         showHelper(help, " Word filled required");
     }
 };
@@ -577,7 +577,7 @@ document.getElementById("word_3Count").onchange = function () {
     var help = document.getElementById("forWord_3Count");
     clearHelper(help);
 
-    if ((word_3Count === "") || (word_3Count < 0)) {
+    if ((word_3Count == "") || (word_3Count < 0)) {
         showHelper(help, " Word ammount filled required and can be 0 or more");
     }
 };
@@ -729,7 +729,7 @@ numberP.onchange = function () {
     var help = document.getElementById("forTotalP");
     clearHelper(help);
 
-    if (numberPVal === "" || (numberPVal <= 0)) {
+    if (numberPVal == "" || (numberPVal <= 0)) {
         showHelper(help, " Number of Articles that need to be generated must be more then 0");
     }
 };
@@ -774,21 +774,21 @@ submit.onclick = function () {
     var options = {};
     var errors = [];
 
-    if (introSent.value !== "" && introSent.value > 0) {
+    if (introSent.value != "" && introSent.value > 0) {
         options.introSent = introSent.value;
     } else {
         errors.push(1);
 
     }
 
-    if (middleSent_1.value !== "" && middleSent_1.value > 0) {
+    if (middleSent_1.value != "" && middleSent_1.value > 0) {
         options.middleSent1 = middleSent_1.value;
     } else {
         errors.push(2);
 
     }
 
-    if (middleSent_2.value !== "" && middleSent_2.value > 0) {
+    if (middleSent_2.value != "" && middleSent_2.value > 0) {
         options.middleSent2 = middleSent_2.value;
     } else {
         errors.push(3);
@@ -799,47 +799,47 @@ submit.onclick = function () {
 
     }
 
-    if (summSent.value !== "" && summSent.value > 0) {
+    if (summSent.value != "" && summSent.value > 0) {
         options.summSent = summSent.value;
     } else {
         errors.push(4);
 
     }
 
-    if (introP.value !== "" && introP.value > 0) {
+    if (introP.value != "" && introP.value > 0) {
         options.introParagraph = introP.value;
     } else {
         errors.push(6);
 
     }
 
-    if (middleP.value !== "" && middleP.value > 0) {
+    if (middleP.value != "" && middleP.value > 0) {
         options.middleParagraph = middleP.value;
     } else {
         errors.push(7);
 
     }
 
-    if (summP.value !== "" && summP.value > 0) {
+    if (summP.value != "" && summP.value > 0) {
         options.summParagraph = summP.value;
     } else {
         errors.push(8);
 
     }
 
-    if (numberP.value !== "" && numberP.value >= 0) {
+    if (numberP.value != "" && numberP.value >= 0) {
         options.totalParag = numberP.value;
     } else {
         errors.push(9);
     }
     if (Number(localStorage.getItem("newWords")) === 1) {
-        if (word_1.value !== "") {
+        if (word_1.value != "") {
             options.word_1 = word_1.value;
         } else {
             errors.push(10);
         }
 
-        if (word_1Count.value !== "" && word_1Count.value >= 0) {
+        if (word_1Count.value != "" && word_1Count.value >= 0) {
             options.word_1Count = word_1Count.value;
         } else {
             errors.push(11);
@@ -847,25 +847,25 @@ submit.onclick = function () {
     }
 
     if (Number(localStorage.getItem("newWords")) === 2) {
-        if (word_1.value !== "") {
+        if (word_1.value != "") {
             options.word_1 = word_1.value;
         } else {
             errors.push(12);
         }
 
-        if (word_1Count.value !== "" && word_1Count.value >= 0) {
+        if (word_1Count.value != "" && word_1Count.value >= 0) {
             options.word_1Count = word_1Count.value;
         } else {
             errors.push(13);
         }
 
-        if (word_2.value !== "") {
+        if (word_2.value != "") {
             options.word_2 = word_2.value;
         } else {
             errors.push(14);
         }
 
-        if (word_2Count.value !== "" && word_2Count.value >= 0) {
+        if (word_2Count.value != "" && word_2Count.value >= 0) {
             options.word_2Count = word_2Count.value;
         } else {
             errors.push(15);
@@ -873,36 +873,36 @@ submit.onclick = function () {
     }
 
     if (Number(localStorage.getItem("newWords")) === 3) {
-        if (word_1.value !== "") {
+        if (word_1.value != "") {
             options.word_1 = word_1.value;
         } else {
             errors.push(16);
         }
 
-        if (word_1Count.value !== "" && word_1Count.value >= 0) {
+        if (word_1Count.value != "" && word_1Count.value >= 0) {
             options.word_1Count = word_1Count.value;
         } else {
             errors.push(17);
         }
 
-        if (word_2.value !== "") {
+        if (word_2.value != "") {
             options.word_2 = word_2.value;
         } else {
             errors.push(18);
         }
 
-        if (word_2Count.value !== "" && word_2Count.value >= 0) {
+        if (word_2Count.value != "" && word_2Count.value >= 0) {
             options.word_2Count = word_2Count.value;
         } else {
             errors.push(19);
         }
-        if (word_3.value !== "") {
+        if (word_3.value != "") {
             options.word_3 = word_3.value;
         } else {
             errors.push(20);
         }
 
-        if (word_3Count.value !== "" && word_3Count.value >= 0) {
+        if (word_3Count.value != "" && word_3Count.value >= 0) {
             options.word_3Count = word_3Count.value;
         } else {
             errors.push(21);
@@ -2247,11 +2247,11 @@ window.onload = function () {
 document.getElementById("introduction").onkeyup = function () {
 
     var text = this.value;
-    if (localStorage.getItem("options") !== "") {
+    if (localStorage.getItem("options") != "") {
 
         var options = JSON.parse(localStorage.getItem("options"));
 
-        if (options !== "") {
+        if (options != "") {
             document.getElementById("noOptions").style.display = "none";
             var enter = text.match(/\n/gi);
             if (enter !== null) {
@@ -2317,7 +2317,7 @@ document.getElementById("introduction").onkeyup = function () {
                         new_str_arr = [];
                     for (var i = 0; i < sent.length - 1; i++) {
                         for (var j = counter; j < 2 + counter; j++) {
-                            if (sent[j] !== "") {
+                            if (sent[j] != "") {
                                 new_sent += sent[j] + ".";
                             }
 
@@ -2335,7 +2335,7 @@ document.getElementById("introduction").onkeyup = function () {
                     var result_arr = [];
                     var sorted_arr = word4Matches.slice().sort();
                     for (var i = 0; i < word4Matches.length; i++) {
-                        if (sorted_arr[i] === "") {
+                        if (sorted_arr[i] == "") {
                             continue;
                         } else if (sorted_arr[i + 1] === sorted_arr[i]) {
                             result_arr.push(sorted_arr[i].trim());
@@ -2365,7 +2365,7 @@ document.getElementById("introduction").onkeyup = function () {
                             } else {
                                 var x = getRndInteger(0, sents4Words.length);
                                 for (var i = 0; i < sents4Words.length; i++) {
-                                    if (i !== x) {
+                                    if (i != x) {
                                         workOnText = workOnText.replace(sents4Words[i], "");
                                     }
 
@@ -2378,7 +2378,7 @@ document.getElementById("introduction").onkeyup = function () {
                     if (countOfSents.length - 1 >= options.introSent * options.introParagraph) {
                         document.getElementById("difintsent").style.display = "none";
                         localStorage.setItem("intArea", workOnText);
-                        if ((localStorage.getItem("intArea") !== "") && (localStorage.getItem("middleArea") !== "") && (localStorage.getItem("summaryArea") !== "")) {
+                        if ((localStorage.getItem("intArea") != "") && (localStorage.getItem("middleArea") != "") && (localStorage.getItem("summaryArea") != "")) {
                             document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block";
                         } else {
                             document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block disabled";
@@ -2394,14 +2394,14 @@ document.getElementById("introduction").onkeyup = function () {
 
                     var notSame_arr = [];
                     for (var i = 0; i < sentences.length; i++) {
-                        if (sorted_array[i + 1] !== sorted_array[i]) {
+                        if (sorted_array[i + 1] != sorted_array[i]) {
                             notSame_arr.push(sorted_array[i]);
                         }
                     }
 
                     var notSame = "";
                     for (var i = 0; i < sentences.length; i++) {
-                        if (sorted_array[i + 1] !== sorted_array[i]) {
+                        if (sorted_array[i + 1] != sorted_array[i]) {
                             notSame += sorted_array[i] + ".";
                         }
                     }
@@ -2414,7 +2414,7 @@ document.getElementById("introduction").onkeyup = function () {
                             new_str_arr = [];
                         for (var i = 0; i < sent.length - 1; i++) {
                             for (var j = counter; j < 2 + counter; j++) {
-                                if (sent[j] !== "") {
+                                if (sent[j] != "") {
                                     new_sent += sent[j] + ".";
                                 }
 
@@ -2495,7 +2495,7 @@ document.getElementById("introduction").onkeyup = function () {
                         newLine = document.createElement("br");
 
                     for (var i = 0; i < results.length; i++) {
-                        if (results[i + 1] !== results[i]) {
+                        if (results[i + 1] != results[i]) {
                             counter++;
                             text += counter + ". " + results[i] + ".\n";
 
@@ -2530,11 +2530,11 @@ document.getElementById("middle").onkeyup = function () {
     var text = this.value;
     // text = text.replace(/\r?\n/g, '<br />');
 
-    if (localStorage.getItem("options") !== "") {
+    if (localStorage.getItem("options") != "") {
 
         var options = JSON.parse(localStorage.getItem("options"));
 
-        if (options !== "") {
+        if (options != "") {
             document.getElementById("noOptionsM").style.display = "none";
             var enter = text.match(/\n/gi);
             if (enter !== null) {
@@ -2558,16 +2558,16 @@ document.getElementById("middle").onkeyup = function () {
                 notCopied = "";
 
             for (var j = 0; j < area_sent.length; j++) {
-                if (sorted_area_sent[j + 1] === sorted_area_sent[j]) {
+                if (sorted_area_sent[j + 1] == sorted_area_sent[j]) {
                     area_sent_result.push(sorted_area_sent[i]);
                 }
             }
 
-            if (area_sent_result.length !== 0) {
+            if (area_sent_result.length != 0) {
 
                 var area_sent_arr = [];
                 for (var j = 0; j < area_sent.length; j++) {
-                    if (sorted_area_sent[j + 1] !== sorted_area_sent[j]) {
+                    if (sorted_area_sent[j + 1] != sorted_area_sent[j]) {
                         area_sent_arr.push(sorted_area_sent[j]);
                     }
                 }
@@ -2588,12 +2588,12 @@ document.getElementById("middle").onkeyup = function () {
 
                 var results = [];
                 for (var i = 0; i < sentences.length - 1; i++) {
-                    if (sorted_arr[i + 1] === sorted_arr[i]) {
+                    if (sorted_arr[i + 1] == sorted_arr[i]) {
                         results.push(sorted_arr[i]);
                     }
                 }
 
-                if (results.length === 0) {
+                if (results.length == 0) {
                     document.getElementById("sameSentacesM").style.display = "none";
 
                     // 4 WORD'S RULE //
@@ -2603,7 +2603,7 @@ document.getElementById("middle").onkeyup = function () {
                         new_str_arr = [];
                     for (var i = 0; i < sent.length - 1; i++) {
                         for (var j = counter; j < 2 + counter; j++) {
-                            if (sent[j] !== "") {
+                            if (sent[j] != "") {
                                 new_sent += sent[j] + ".";
                             }
                         }
@@ -2620,9 +2620,9 @@ document.getElementById("middle").onkeyup = function () {
                     var result_arr = [];
                     var sorted_arr = word4Matches.slice().sort();
                     for (var i = 0; i < word4Matches.length; i++) {
-                        if (sorted_arr[i] === "") {
+                        if (sorted_arr[i] == "") {
                             continue;
-                        } else if (sorted_arr[i + 1] === sorted_arr[i]) {
+                        } else if (sorted_arr[i + 1] == sorted_arr[i]) {
                             result_arr.push(sorted_arr[i].trim());
                         }
                     }
@@ -2631,14 +2631,14 @@ document.getElementById("middle").onkeyup = function () {
                         count[i] = (count[i] || 0) + 1;
                     });
 
-                    if (result_arr.length !== 0) {
+                    if (result_arr.length != 0) {
                         var propValue;
                         for (var propName in count) {
                             propValue = count[propName];
                             var word_4SentReg = new RegExp("[^.?!]*(?:[.?,\\s!])" + propName + "(?=[\\s.?!,])[^.?!]*[.?!]", "gi");
                             var sents4Words = workOnText.match(word_4SentReg);
                             var first4words = propName.split(".");
-                            if ((propValue + 1) % 2 === 0) {
+                            if ((propValue + 1) % 2 == 0) {
                                 var x = getRndInteger(0, sents4Words.length);
                                 for (var i = 0; i < sents4Words.length; i++) {
 
@@ -2650,7 +2650,7 @@ document.getElementById("middle").onkeyup = function () {
                             } else {
                                 var x = getRndInteger(0, sents4Words.length);
                                 for (var i = 0; i < sents4Words.length; i++) {
-                                    if (i !== x) {
+                                    if (i != x) {
                                         workOnText = workOnText.replace(sents4Words[i], "");
                                     }
 
@@ -2663,7 +2663,7 @@ document.getElementById("middle").onkeyup = function () {
                     if (countOfSents.length - 1 >= options.middleSent2 * options.middleParagraph) {
                         document.getElementById("difmidsent").style.display = "none";
                         localStorage.setItem("middleArea", workOnText);
-                        if ((localStorage.getItem("intArea") !== "") && (localStorage.getItem("middleArea") !== "") && (localStorage.getItem("summaryArea") !== "")) {
+                        if ((localStorage.getItem("intArea") != "") && (localStorage.getItem("middleArea") != "") && (localStorage.getItem("summaryArea") != "")) {
                             document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block";
                         } else {
                             document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block disabled";
@@ -2678,14 +2678,14 @@ document.getElementById("middle").onkeyup = function () {
 
                     var notSame_arr = [];
                     for (var i = 0; i < sentences.length; i++) {
-                        if (sorted_array[i + 1] !== sorted_array[i]) {
+                        if (sorted_array[i + 1] != sorted_array[i]) {
                             notSame_arr.push(sorted_array[i]);
                         }
                     }
 
                     var notSame = "";
                     for (var i = 0; i < sentences.length; i++) {
-                        if (sorted_array[i + 1] !== sorted_array[i]) {
+                        if (sorted_array[i + 1] != sorted_array[i]) {
                             notSame += sorted_array[i] + ".";
                         }
                     }
@@ -2698,7 +2698,7 @@ document.getElementById("middle").onkeyup = function () {
                             new_str_arr = [];
                         for (var i = 0; i < sent.length - 1; i++) {
                             for (var j = counter; j < 2 + counter; j++) {
-                                if (sent[j] !== "") {
+                                if (sent[j] != "") {
                                     new_sent += sent[j] + ".";
                                 }
 
@@ -2716,9 +2716,9 @@ document.getElementById("middle").onkeyup = function () {
                         var result_arr = [];
                         var sorted_arr = word4Matches.slice().sort();
                         for (var i = 0; i < word4Matches.length; i++) {
-                            if (sorted_arr[i] === "") {
+                            if (sorted_arr[i] == "") {
                                 continue;
-                            } else if (sorted_arr[i + 1] === sorted_arr[i]) {
+                            } else if (sorted_arr[i + 1] == sorted_arr[i]) {
                                 result_arr.push(sorted_arr[i].trim());
                             }
                         }
@@ -2727,14 +2727,14 @@ document.getElementById("middle").onkeyup = function () {
                             count[i] = (count[i] || 0) + 1;
                         });
 
-                        if (result_arr.length !== 0) {
+                        if (result_arr.length != 0) {
                             var propValue;
                             for (var propName in count) {
                                 propValue = count[propName];
                                 var word_4SentReg = new RegExp("[^.?!]*(?:[.?,\\s!])" + propName + "(?=[\\s.?!,])[^.?!]*[.?!]", "gi");
                                 var sents4Words = notSame.match(word_4SentReg);
                                 var first4words = propName.split(".");
-                                if ((propValue + 1) % 2 === 0) {
+                                if ((propValue + 1) % 2 == 0) {
                                     var x = getRndInteger(0, sents4Words.length);
                                     for (var i = 0; i < sents4Words.length; i++) {
 
@@ -2746,7 +2746,7 @@ document.getElementById("middle").onkeyup = function () {
                                 } else {
                                     var x = getRndInteger(0, sents4Words.length);
                                     for (var i = 0; i < sents4Words.length - 1; i++) {
-                                        if (i !== x) {
+                                        if (i != x) {
                                             notSame = notSame.replace(sents4Words[i], "");
                                         }
                                     }
@@ -2758,7 +2758,7 @@ document.getElementById("middle").onkeyup = function () {
                         if (countOfSents.length - 1 >= options.middleSent2 * options.middleParagraph) {
                             document.getElementById("difmidsent").style.display = "none";
                             localStorage.setItem("middleArea", notSame);
-                            if ((localStorage.getItem("intArea") !== "") && (localStorage.getItem("middleArea") !== "") && (localStorage.getItem("summaryArea") !== "")) {
+                            if ((localStorage.getItem("intArea") != "") && (localStorage.getItem("middleArea") != "") && (localStorage.getItem("summaryArea") != "")) {
                                 document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block";
                             } else {
                                 document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block disabled";
@@ -2780,7 +2780,7 @@ document.getElementById("middle").onkeyup = function () {
                         newLine = document.createElement("br");
 
                     for (var i = 0; i < results.length; i++) {
-                        if (results[i + 1] !== results[i]) {
+                        if (results[i + 1] != results[i]) {
                             counter++;
                             text += counter + ". " + results[i] + ".\n";
 
@@ -2814,9 +2814,9 @@ document.getElementById("middle").onkeyup = function () {
 document.getElementById("summary").onkeyup = function () {
     var text = this.value;
 
-    if (localStorage.getItem("options") !== "") {
+    if (localStorage.getItem("options") != "") {
         var options = JSON.parse(localStorage.getItem("options"));
-        if (options !== "") {
+        if (options != "") {
             document.getElementById("noOptionsS").style.display = "none";
             var enter = text.match(/\n/gi);
             if (enter !== null) {
@@ -2833,7 +2833,6 @@ document.getElementById("summary").onkeyup = function () {
             var sentences = workOnText.split(/[.|?|!]/gi);
             document.getElementById("sumSentCount").innerHTML = "<em><ins>Senteces</ins></em> : " + "<strong>" + (sentences.length - 1) + "</strong>";
 
-
             var area_sent = sentences,
                 sorted_area_sent = area_sent.slice().sort();
 
@@ -2841,12 +2840,12 @@ document.getElementById("summary").onkeyup = function () {
                 notCopied = "";
 
             for (var j = 0; j < area_sent.length; j++) {
-                if (sorted_area_sent[j + 1] === sorted_area_sent[j]) {
+                if (sorted_area_sent[j + 1] == sorted_area_sent[j]) {
                     area_sent_result.push(sorted_area_sent[i]);
                 }
             }
 
-            if (area_sent_result.length !== 0) {
+            if (area_sent_result.length != 0) {
 
                 var area_sent_arr = [];
                 for (var j = 0; j < area_sent.length; j++) {
@@ -2870,11 +2869,11 @@ document.getElementById("summary").onkeyup = function () {
 
                 var results = [];
                 for (var i = 0; i < sentences.length - 1; i++) {
-                    if (sorted_arr[i + 1] === sorted_arr[i]) {
+                    if (sorted_arr[i + 1] == sorted_arr[i]) {
                         results.push(sorted_arr[i]);
                     }
                 }
-                if (results.length === 0) {
+                if (results.length == 0) {
                     document.getElementById("sameSentacesS").style.display = "none";
 
                     // 4 WORD'S RULE //
@@ -2884,7 +2883,7 @@ document.getElementById("summary").onkeyup = function () {
                         new_str_arr = [];
                     for (var i = 0; i < sent.length - 1; i++) {
                         for (var j = counter; j < 2 + counter; j++) {
-                            if (sent[j] !== "") {
+                            if (sent[j] != "") {
                                 new_sent += sent[j] + ".";
                             }
                         }
@@ -2901,9 +2900,9 @@ document.getElementById("summary").onkeyup = function () {
                     var result_arr = [];
                     var sorted_arr = word4Matches.slice().sort();
                     for (var i = 0; i < word4Matches.length; i++) {
-                        if (sorted_arr[i] === "") {
+                        if (sorted_arr[i] == "") {
                             continue;
-                        } else if (sorted_arr[i + 1] === sorted_arr[i]) {
+                        } else if (sorted_arr[i + 1] == sorted_arr[i]) {
                             result_arr.push(sorted_arr[i].trim());
                         }
                     }
@@ -2912,14 +2911,14 @@ document.getElementById("summary").onkeyup = function () {
                         count[i] = (count[i] || 0) + 1;
                     });
 
-                    if (result_arr.length !== 0) {
+                    if (result_arr.length != 0) {
                         var propValue;
                         for (var propName in count) {
                             propValue = count[propName];
                             var word_4SentReg = new RegExp("[^.?!]*(?:[.?,\\s!])" + propName + "(?=[\\s.?!,])[^.?!]*[.?!]", "gi");
                             var sents4Words = workOnText.match(word_4SentReg);
                             var first4words = propName.split(".");
-                            if ((propValue + 1) % 2 === 0) {
+                            if ((propValue + 1) % 2 == 0) {
                                 var x = getRndInteger(0, sents4Words.length);
                                 for (var i = 0; i < sents4Words.length; i++) {
 
@@ -2931,7 +2930,7 @@ document.getElementById("summary").onkeyup = function () {
                             } else {
                                 var x = getRndInteger(0, sents4Words.length);
                                 for (var i = 0; i < sents4Words.length; i++) {
-                                    if (i !== x) {
+                                    if (i != x) {
                                         workOnText = workOnText.replace(sents4Words[i], "");
                                     }
                                 }
@@ -2943,7 +2942,7 @@ document.getElementById("summary").onkeyup = function () {
                     if (countOfSents.length - 1 >= options.summSent * options.summParagraph) {
                         document.getElementById("difsumsent").style.display = "none";
                         localStorage.setItem("summaryArea", workOnText);
-                        if ((localStorage.getItem("intArea") !== "") && (localStorage.getItem("middleArea") !== "") && (localStorage.getItem("summaryArea") !== "")) {
+                        if ((localStorage.getItem("intArea") != "") && (localStorage.getItem("middleArea") != "") && (localStorage.getItem("summaryArea") != "")) {
                             document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block";
                         } else {
                             document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block disabled";
@@ -2958,14 +2957,14 @@ document.getElementById("summary").onkeyup = function () {
 
                     var notSame_arr = [];
                     for (var i = 0; i < sentences.length; i++) {
-                        if (sorted_array[i + 1] !== sorted_array[i]) {
+                        if (sorted_array[i + 1] != sorted_array[i]) {
                             notSame_arr.push(sorted_array[i]);
                         }
                     }
 
                     var notSame = "";
                     for (var i = 0; i < sentences.length; i++) {
-                        if (sorted_array[i + 1] !== sorted_array[i]) {
+                        if (sorted_array[i + 1] != sorted_array[i]) {
                             notSame += sorted_array[i] + ".";
                         }
                     }
@@ -2980,7 +2979,7 @@ document.getElementById("summary").onkeyup = function () {
                             new_str_arr = [];
                         for (var i = 0; i < sent.length - 1; i++) {
                             for (var j = counter; j < 2 + counter; j++) {
-                                if (sent[j] !== "") {
+                                if (sent[j] != "") {
                                     new_sent += sent[j] + ".";
                                 }
 
@@ -2998,9 +2997,9 @@ document.getElementById("summary").onkeyup = function () {
                         var result_arr = [];
                         var sorted_arr = word4Matches.slice().sort();
                         for (var i = 0; i < word4Matches.length; i++) {
-                            if (sorted_arr[i] === "") {
+                            if (sorted_arr[i] == "") {
                                 continue;
-                            } else if (sorted_arr[i + 1] === sorted_arr[i]) {
+                            } else if (sorted_arr[i + 1] == sorted_arr[i]) {
                                 result_arr.push(sorted_arr[i].trim());
                             }
                         }
@@ -3009,14 +3008,14 @@ document.getElementById("summary").onkeyup = function () {
                             count[i] = (count[i] || 0) + 1;
                         });
 
-                        if (result_arr.length !== 0) {
+                        if (result_arr.length != 0) {
                             var propValue;
                             for (var propName in count) {
                                 propValue = count[propName];
                                 var word_4SentReg = new RegExp("[^.?!]*(?:[.?,\\s!])" + propName + "(?=[\\s.?!,])[^.?!]*[.?!]", "gi");
                                 var sents4Words = notSame.match(word_4SentReg);
                                 var first4words = propName.split(".");
-                                if ((propValue + 1) % 2 === 0) {
+                                if ((propValue + 1) % 2 == 0) {
                                     var x = getRndInteger(0, sents4Words.length);
                                     for (var i = 0; i < sents4Words.length; i++) {
 
@@ -3028,7 +3027,7 @@ document.getElementById("summary").onkeyup = function () {
                                 } else {
                                     var x = getRndInteger(0, sents4Words.length);
                                     for (var i = 0; i < sents4Words.length; i++) {
-                                        if (i !== x) {
+                                        if (i != x) {
                                             notSame = notSame.replace(sents4Words[i], "");
                                         }
                                     }
@@ -3040,7 +3039,7 @@ document.getElementById("summary").onkeyup = function () {
                         if (countOfSents.length - 1 >= options.summSent * options.summParagraph) {
                             document.getElementById("difsumsent").style.display = "none";
                             localStorage.setItem("summaryArea", notSame);
-                            if ((localStorage.getItem("intArea") !== "") && (localStorage.getItem("middleArea") !== "") && (localStorage.getItem("summaryArea") !== "")) {
+                            if ((localStorage.getItem("intArea") != "") && (localStorage.getItem("middleArea") != "") && (localStorage.getItem("summaryArea") != "")) {
                                 document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block";
                             } else {
                                 document.getElementById("gen_btn").className = "btn btn-primary btn-lg btn-block disabled";
@@ -3055,18 +3054,15 @@ document.getElementById("summary").onkeyup = function () {
                         document.getElementById("difsumsent").style.display = "block";
                     }
 
-
-
                     var sameSent = document.getElementById("sameSentacesS");
                     var counter = 0,
                         text = "",
                         newLine = document.createElement("br");
 
                     for (var i = 0; i < results.length; i++) {
-                        if (results[i + 1] !== results[i]) {
+                        if (results[i + 1] != results[i]) {
                             counter++;
                             text += counter + ". " + results[i] + ".\n";
-
                         }
                     }
                     while (sameSent.hasChildNodes()) {
@@ -3090,7 +3086,6 @@ document.getElementById("summary").onkeyup = function () {
         localStorage.setItem("summaryArea", "");
         document.getElementById("noOptionsS").style.display = "block";
     }
-
 };
 
 document.getElementById("gen_btn").onclick = function () {
@@ -3890,7 +3885,9 @@ document.getElementById("gen_btn").onclick = function () {
             total_arr = cross(total_arr);
             total_arr2 = cross(total_arr2);
             total_arr3 = cross(total_arr3);                                    
-
+            console.log(total_arr);
+            console.log(total_arr2);
+            console.log(total_arr3);
             total_arr = divide(total_arr, Number(options.totalParag), Number(options.introParagraph));
             total_arr2 = divide(total_arr2, Number(options.totalParag), Number(options.middleParagraph));
             total_arr3 = divide(total_arr3, Number(options.totalParag), Number(options.summParagraph));            
